@@ -60,15 +60,15 @@ code block containing output
 
 If there are any notes, put them here. Otherwise remove this section
 
+* Note 1
+* Note 2
+
 ## See Also
 
 If there are any related documents, link to them here. Otherwise remove this section
 
 * [Thing 1](foo.md)
 * [Thing 2](bar.md)
-
-* Note 1
-* Note 2
 
 ## Changelog
 
