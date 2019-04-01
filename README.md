@@ -20,7 +20,7 @@ This repo is to coordinate documentation for the NewChain SDK. We are doing this
 
 ## Documentation Style
 
-Please refer to [our style guide](example_documentation.md). If you have any questions, please ask
+Please refer to [our style guide](example_doc.md). If you have any questions, please ask
 
 ## Workflow
 
