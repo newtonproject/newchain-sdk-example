@@ -9,6 +9,8 @@ NewChain lives in a multi-chain world. For end users, it's perfectly common to t
 The Bitcoin protocol uses Base58Check encoding to prevent users sending value off-network, while Ethereum uses a raw hex version of the address.
 Qtum, NEO and Ontology use similar encoding to Bitcoin. EOS is slightly different, but almost similar to Bitcoin.
 
+At present this system works with NewChain, but will also work with other blockchains in the future.
+
 ## NewChain Addresses
 
 NewChain specifies a network ID (also known as a chain ID). Programmers can extract the network part and a visual indicator of subchain and main chain, as well as other networks like Bitcoin and Ethereum.
@@ -23,7 +25,7 @@ The following items are encoded:
 
 3 character prefix:
 
-*NEW*132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+<b>NEW</b>132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 Last 4 bytes of the network ID: 123A
 
@@ -37,7 +39,6 @@ Four bytes (32 bits) of SHA3-based error checking code: UK6K
 
 NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9*UK6K*
 
-At present this system works with NewChain, but will also work with other blockchains in the future.
 
 ### Easy to Implement
 
