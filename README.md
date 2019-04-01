@@ -10,11 +10,13 @@ This repo is to coordinate documentation for the NewChain SDK. We are doing this
 
 ## Tasks
 
-* NodeJS function calls - 
-* Java function calls - 
-* Python function calls - 
-* Documentation polishing - 
+* NodeJS function calls - Pony
+* Java function calls - Li Xuan
+* Python function calls - Zhang Zetian
+* Documentation polishing - Alex
 * Node locations - Xia Wu
+* Get docs.newtonproject.org connected - Xia Wu
+* Get gitbook running on docs.newtonproject.org - @alexcg or Xia Wu
 
 ## Documentation Style
 
