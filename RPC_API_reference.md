@@ -1,8 +1,10 @@
 # NewChain RPC API Reference
 
 ## get_block_height
- 
-*Ethereum equivalent:* eth_blockNumber
+
+Gets the current block number
+
+**Ethereum equivalent:** eth_blockNumber
 
 ### Parameters
 
@@ -14,7 +16,9 @@ An integer of the current block number where the client is located
  
 ## get_block_by_height
  
-*Ethereum equivalent:* eth_getBlockByNumber
+Gets block number of specified block
+
+**Ethereum equivalent:** eth_getBlockByNumber
 
 ### Parameters
 
@@ -27,6 +31,8 @@ Two arguments:
 
 Returns a block object, if it is not found to be null.
 
+|Name | Type | Returns |
+| ---	| ---	| ---	|
 |Number| QUANTITY | the block number. null when its pending block.|
 |Hash| DATA, 32 Bytes | hash of the block. null when its pending block.|
 |parentHash| DATA, 32 Bytes | hash of the parent block.|
@@ -49,7 +55,7 @@ Returns a block object, if it is not found to be null.
  
 ## get_block_by_hash
  
-*Ethereum equivalent:* eth_getBlockByHash
+**Ethereum equivalent:** eth_getBlockByHash
 
 ### Parameters
 
@@ -81,7 +87,7 @@ Uncles: Array - Array of uncle hashes.
  
 ## get_transaction_count_by_height
  
-*Ethereum equivalent:* eth_getBlockTransactionCountByNumberParameter: the integer of the block number (such as 0x1b4), or the string "earliest", "latest" or "pending".
+**Ethereum equivalent:** eth_getBlockTransactionCountByNumberParameter: the integer of the block number (such as 0x1b4), or the string "earliest", "latest" or "pending".
 
 ### Return Values
 
@@ -89,7 +95,7 @@ number of transactions, hexadecimal integer
  
 ## get_transaction_by_height_and_index
  
-*Ethereum equivalent:* eth_getTransactionByBlockNumberAndIndex
+**Ethereum equivalent:** eth_getTransactionByBlockNumberAndIndex
 
 ### Parameters
 
@@ -114,7 +120,7 @@ Input: DATA - the data send along with the transaction.
  
 ## get_transaction_by_hash
  
-*Ethereum equivalent:* eth_getTransactionByHash
+**Ethereum equivalent:** eth_getTransactionByHash
 
 ### Parameters
 
@@ -137,7 +143,7 @@ Input: DATA - the data send along with the transaction.
  
 ## get_balance_by_address
  
-*Ethereum equivalent:* eth_getBalance
+**Ethereum equivalent:** eth_getBalance
 
 ### Parameters
 
@@ -150,7 +156,7 @@ an integer of the current balance in wei
  
 ## send_transaction
  
-*Ethereum equivalent:* eth_sendRawTransaction
+**Ethereum equivalent:** eth_sendRawTransaction
 
 ### Parameters
 
