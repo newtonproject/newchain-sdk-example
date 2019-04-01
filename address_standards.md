@@ -15,7 +15,7 @@ At present this system works with NewChain, but will also work with other blockc
 
 NewChain specifies a network ID (also known as a chain ID). Programmers can extract the network part and a visual indicator of subchain and main chain, as well as other networks like Bitcoin and Ethereum.
 
-An example NewChain address would be:
+An example NewChain address is:
 
 ```
 NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
@@ -23,55 +23,58 @@ NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 The following items are encoded:
 
-3 character prefix:
+3 character [network ID](network_id.md):
 
 <b>NEW</b>132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
-Last 4 bytes of the network ID: 123A
+4-byte [chain ID](chain_id.md):
 
-NEW*132A*WeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW<b>132</b>AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
-Actual address data: 
+Actual address: 
 
-NEW132A*WeEvHXTLWbTGVwvXpCjCcfv1uoiF9*UK6K
+NEW132A<b>WeEvHXTLWbTGVwvXpCjCcfv1uoiF9</b>UK6K
 
-Four bytes (32 bits) of SHA3-based error checking code: UK6K
+Four bytes (32 bits) of SHA3-based checksum: 
 
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9*UK6K*
+NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9<b>UK6K</b>
 
+(The last four bytes of the SHA3-based error checking code reduce the accidental address errors which occur in Ethereum.)
 
-### Easy to Implement
+## How Do We Build a NewChain Address?
 
-Since NewChain is based on the go-Ethereum codebase, generating NewChain addresses is very simple. The last four bytes of the SHA3-based error checking code reduce the accidental address errors which occur in Ethereum.
-
-## NewChain MainChain Examples
-
-### 256-bit private key
+We start with a 256-bit private key:
 
 ```
 eec7d48ec12e2f8f6da7683eb202529d35cd814875d23b0eba127ab01f73239b
 ```
-`
-### Uncompressed public key with secp256r1
-`
+
+The public key is created by running the private key through secp256r1:
+
 ```
 e19e548c22765859940e854f863a2932e637415b9efaf32cbd21452369cc8e764c57e0a89a0b0c64c6cebd70385c03d8f570b6baf8dcd75502404719aee84461
 ```
-`
-### Keccak-256 hash of the public key
-`
+
+The uncompressed public key is hashed with the Keccak-256 algorithm:
+
 ```
 c5592e6aab131b88a728868154db4d39cedeaf78af1d15aa540570ca168fe303
 ```
-`
-### Last 40 characters/20 bytes of this hash key (Keccak-256)
-`
+
+We take the last 40 characters for the hashed public key...:
+
 ```
 54db4d39cedeaf78af1d15aa540570ca168fe303
 ```
 
-### Combined with Base58Check
-`
+...and run it through the Base58Check algorithm:
+
 ```
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+```
+
+We then combine this with our network ID (NEW) and chain ID (132) to get the final NewChain address:
+
+```
+NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 ```
