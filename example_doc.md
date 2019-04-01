@@ -18,9 +18,9 @@ Explain what the code does
 
 ## Parameters
 
-```parameter 1``` - what is it?
+* parameter 1 - what is it?
 
-```parameter 2``` - what is it?
+* parameter 2 - what is it?
 
 ## Return Values
 
