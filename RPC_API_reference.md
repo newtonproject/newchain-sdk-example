@@ -16,13 +16,13 @@ An integer of the current block number where the client is located
  
 ## get_block_by_height
  
-Gets block number of specified block
+Gets the block number of the specified block
 
 **Ethereum equivalent:** eth_getBlockByNumber
 
 ### Parameters
 
-Two arguments:
+Two parameters:
 
 * A block-numbered integer (such as 0x1b4), or the string "earliest", "latest" or "pending".
 * The boolean type. If true, it returns all the complete transaction objects. If it is false, it only returns the hash value of the transaction object.
@@ -55,14 +55,15 @@ Returns a block object, if it is not found to be null.
  
 ## get_block_by_hash
 
-Gets block by specified hash 
+Gets the block with the specified hash 
  
 **Ethereum equivalent:** eth_getBlockByHash
 
 ### Parameters
 
-two parameters, the first one is the hash value of the block (32Bytes).
-The second one is the boolean type. If true, it returns all the complete transaction objects. If it is false, it only returns the hash value of the transaction object.
+Two parameters:
+* The hash value of the block (32 bytes)
+The boolean type. If true, it returns all the complete transaction objects. If false, it only returns the hash value of the transaction object.
 
 ### Return Values
 
@@ -92,7 +93,11 @@ Returns a block object, if it is not found to be null.
 
 ## get_transaction_count_by_height
  
-**Ethereum equivalent:** eth_getBlockTransactionCountByNumberParameter: the integer of the block number (such as 0x1b4), or the string "earliest", "latest" or "pending".
+**Ethereum equivalent:** eth_getBlockTransactionCountByNumberParameter: 
+
+### Parameters
+
+The integer of the block number (such as 0x1b4), or the string "earliest", "latest" or "pending".
 
 ### Return Values
 
