@@ -33,7 +33,7 @@ Returns a block object, if it is not found to be null.
 
 |Name | Type | Returns |
 | ---	| ---	| ---	|
-|Number| QUANTITY | the block number. null when its pending block.|
+|Number | QUANTITY | the block number. null when its pending block.|
 |Hash| DATA, 32 Bytes | hash of the block. null when its pending block.|
 |parentHash| DATA, 32 Bytes | hash of the parent block.|
 |Nonce| DATA, 8 Bytes | hash of the generated proof-of-work. null when its pending block.|
@@ -54,6 +54,8 @@ Returns a block object, if it is not found to be null.
 |Uncles| Array | Array of uncle hashes.|
  
 ## get_block_by_hash
+
+Gets block by specified hash 
  
 **Ethereum equivalent:** eth_getBlockByHash
 
