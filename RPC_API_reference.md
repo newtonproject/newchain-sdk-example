@@ -31,7 +31,7 @@ Two arguments:
 
 Returns a block object, if it is not found to be null.
 
-|Name | Type | Returns |
+|Value | Type | Returns |
 | ---	| ---	| ---	|
 |Number | QUANTITY | the block number. null when its pending block.|
 |Hash| DATA, 32 Bytes | hash of the block. null when its pending block.|
@@ -67,33 +67,36 @@ The second one is the boolean type. If true, it returns all the complete transac
 ### Return Values
 
 Returns a block object, if it is not found to be null.
-Number: QUANTITY - the block number. null when its pending block.
-Hash: DATA, 32 Bytes - hash of the block. null when its pending block.
-parentHash: DATA, 32 Bytes - hash of the parent block.
-Nonce: DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
-sha3Uncles: DATA, 32 Bytes - SHA3 of the uncles data in the block.
-logsBloom: DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-transactionsRoot: DATA, 32 Bytes - the root of the transaction trie of the block.
-stateRoot: DATA, 32 Bytes - the root of the final state trie of the block.
-receiptsRoot: DATA, 32 Bytes - the root of the receipts trie of the block.
-Miner: DATA, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-Difficulty: QUANTITY - integer of the difficulty for this block.
-totalDifficulty: QUANTITY - integer of the total difficulty of the chain until this block.
-extraData: DATA - the "extra data" field of this block.
-Size: QUANTITY - integer the size of this block in bytes.
-gasLimit: QUANTITY - the maximum gas allowed in this block.
-gasUsed: QUANTITY - the total used gas by all transactions in this block.
-Timestamp: QUANTITY - the unix timestamp for when the block was collated.
-Transactions: Array - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
-Uncles: Array - Array of uncle hashes.
- 
+
+|Value | Type | Returns |
+| ---	| ---	| ---	|
+|Number| QUANTITY | the block number. null when its pending block.|
+|Hash| DATA, 32 Bytes | hash of the block. null when its pending block.|
+|parentHash| DATA, 32 Bytes | hash of the parent block.|
+|Nonce| DATA, 8 Bytes | hash of the generated proof-of-work. null when its pending block.|
+|sha3Uncles| DATA, 32 Bytes | SHA3 of the uncles data in the block.|
+|logsBloom| DATA, 256 Bytes | the bloom filter for the logs of the block. null when its pending block.|
+|transactionsRoot| DATA, 32 Bytes | the root of the transaction trie of the block.|
+|stateRoot| DATA, 32 Bytes | the root of the final state trie of the block.|
+|receiptsRoot| DATA, 32 Bytes | the root of the receipts trie of the block.|
+|Miner| DATA, 20 Bytes | the address of the beneficiary to whom the mining rewards were given.|
+|Difficulty| QUANTITY | integer of the difficulty for this block.|
+|totalDifficulty| QUANTITY | integer of the total difficulty of the chain until this block.|
+|extraData| DATA | the "extra data" field of this block.|
+|Size| QUANTITY | integer the size of this block in bytes.|
+|gasLimit| QUANTITY | the maximum gas allowed in this block.|
+|gasUsed| QUANTITY | the total used gas by all transactions in this block.|
+|Timestamp| QUANTITY | the unix timestamp for when the block was collated.|
+|Transactions| Array | Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.|
+|Uncles| Array | Array of uncle hashes.|
+
 ## get_transaction_count_by_height
  
 **Ethereum equivalent:** eth_getBlockTransactionCountByNumberParameter: the integer of the block number (such as 0x1b4), or the string "earliest", "latest" or "pending".
 
 ### Return Values
 
-number of transactions, hexadecimal integer
+Number of transactions, hexadecimal integer
  
 ## get_transaction_by_height_and_index
  
@@ -101,24 +104,27 @@ number of transactions, hexadecimal integer
 
 ### Parameters
 
-two arguments, the first being a block-numbered integer (such as 0x1b4), or the string "earliest", "latest" or "pending".
-The second is the index position of the transaction (for example: 0x0)
+Two arguments:
+* A block-numbered integer (such as 0x1b4), or the string "earliest", "latest" or "pending". 
+* The index position of the transaction (for example: 0x0)
 
 ### Return Values
 
+A transaction object, or null if there is no transaction
 
-a transaction object, or null if there is no transaction
-Hash: DATA, 32 Bytes - hash of the transaction.
-Nonce: QUANTITY - the number of transactions made by the sender prior to this one.
-blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
-blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
-transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
-From: DATA, 20 Bytes - address of the sender.
-To: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-Value: QUANTITY - value transferred in Wei.
-gasPrice: QUANTITY - gas price provided by the sender in Wei.
-Gas: QUANTITY - gas provided by the sender.
-Input: DATA - the data send along with the transaction.
+|Value | Type | Returns |
+| ---	| ---	| ---	|
+|Hash| DATA, 32 Bytes | hash of the transaction.|
+|Nonce| QUANTITY | the number of transactions made by the sender prior to this one.|
+|blockHash| DATA, 32 Bytes | hash of the block where this transaction was in. null when its pending.|
+|blockNumber| QUANTITY | block number where this transaction was in. null when its pending.|
+|transactionIndex| QUANTITY | integer of the transactions index position in the block. null when its pending.|
+|From| DATA, 20 Bytes | address of the sender.|
+|To| DATA, 20 Bytes | address of the receiver. null when its a contract creation transaction.|
+|Value| QUANTITY | value transferred in Wei.|
+|gasPrice| QUANTITY | gas price provided by the sender in Wei.|
+|Gas| QUANTITY | gas provided by the sender.|
+|Input| DATA | the data send along with the transaction.|
  
 ## get_transaction_by_hash
  
@@ -126,22 +132,25 @@ Input: DATA - the data send along with the transaction.
 
 ### Parameters
 
-The hash value of the block (32Bytes).
+The hash value of the block (32 bytes).
 
 ### Return Values
 
-a transaction object, or null if there is no transaction
-Hash: DATA, 32 Bytes - hash of the transaction.
-Nonce: QUANTITY - the number of transactions made by the sender prior to this one.
-blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
-blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
-transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
-From: DATA, 20 Bytes - address of the sender.
-To: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-Value: QUANTITY - value transferred in Wei.
-gasPrice: QUANTITY - gas price provided by the sender in Wei.
-Gas: QUANTITY - gas provided by the sender.
-Input: DATA - the data send along with the transaction.
+A transaction object, or null if there is no transaction
+
+|Value | Type | Returns |
+| ---	| ---	| ---	|
+|Hash| DATA, 32 Bytes | hash of the transaction.|
+|Nonce| QUANTITY | the number of transactions made by the sender prior to this one.|
+|blockHash| DATA, 32 Bytes | hash of the block where this transaction was in. null when its pending.|
+|blockNumber| QUANTITY | block number where this transaction was in. null when its pending.|
+|transactionIndex| QUANTITY | integer of the transactions index position in the block. null when its pending.|
+|From| DATA, 20 Bytes | address of the sender.|
+|To| DATA, 20 Bytes | address of the receiver. null when its a contract creation transaction.|
+|Value| QUANTITY | value transferred in Wei.|
+|gasPrice| QUANTITY | gas price provided by the sender in Wei.|
+|Gas| QUANTITY | gas provided by the sender.|
+|Input| DATA | the data send along with the transaction.|
  
 ## get_balance_by_address
  
@@ -149,12 +158,13 @@ Input: DATA - the data send along with the transaction.
 
 ### Parameters
 
-The first parameter is: 20Bytes address
-The second parameter is: block-numbered integer (such as 0x1b4), or the string "earliest", "latest" or "pending".
+Two parameters:
+* A 20-byte address
+* A block-numbered integer (such as 0x1b4), or the string "earliest", "latest" or "pending".
 
 ### Return Values
 
-an integer of the current balance in wei
+An integer of the current balance in wei
  
 ## send_transaction
  
@@ -162,9 +172,9 @@ an integer of the current balance in wei
 
 ### Parameters
 
-signed transaction data
+Signed transaction data
 
 ### Return Values
 
-returns the transaction hash value, if the transaction is not available, the hash is 0.
+The transaction hash value, if the transaction is not available, the hash is 0.
  
