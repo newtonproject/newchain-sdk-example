@@ -9,7 +9,7 @@ const mainRpc = "tbd";
 // config chain ID
 const devChainId = 1002;
 const testChainId = 1007;
-const mainCahinId = 1012;
+const mainChainId = 1012;
 
 /**
  * generate the account, you can get your hex address, and your privateKey.
@@ -35,16 +35,16 @@ function signUseTx() {
     web3.eth.getBalance(address).then(console.log);
     web3.eth.getTransactionCount(address).then(
         nonce => {
-            console.log("nonce is:" + nonce);
+            console.log("Nonce:" + nonce);
             web3.eth.getGasPrice().then(gasPrice => {
-                console.log("gas price:" + gasPrice);
+                console.log("Gas price:" + gasPrice);
                 web3.eth.estimateGas(
                     {
                         to: toAddress,
                         data: ""
                     }
                 ).then(gasLimit => {
-                    console.log("gas limit:" + gasLimit);
+                    console.log("Gas limit:" + gasLimit);
                     const txParams = {
                         nonce: convertHexString(nonce),
                         gasPrice: convertHexString(gasPrice), 
