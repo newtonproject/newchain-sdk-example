@@ -1,5 +1,14 @@
 # NewChain RPC API Reference
 
+### RPC Config
+
+```
+testnet:
+https://rpc2.newchain.cloud.diynova.com
+https://rpc1.newchain.newtonproject.org
+https://rpc3.newchain.cloud.diynova.com
+```
+
 ## get_block_height
 
 Gets the current block number
