@@ -10,11 +10,12 @@ This repo is to coordinate documentation for the NewChain SDK. We are doing this
 
 ## Tasks
 
-* NodeJS function calls - Pony
-* Java function calls - Li Xuan
-* Python function calls - Zhang Zetian
+* ~~NodeJS function calls - Pony~~ - DONE
+* ~~Java function calls - Li Xuan~~ - DONE
+* ~~Python function calls - Zhang Zetian~~ - DONE
+* Documentation check - @alexcg
 * Documentation polishing - @alexcg
-* Node locations - @xiawu
+* ~~Node locations - @xiawu~~ - DONE
 * Get docs.newtonproject.org connected - @xiawu
 * Get gitbook running on docs.newtonproject.org - @alexcg or @xiawu
 
@@ -29,4 +30,3 @@ Work via Gitlab as much as possible!
 * If there is a problem or bug, raise an issue on GitLab.
 * Don't ask if your work is okay - commit it, make a merge request, and THEN ask your team to check.
 * But if you have a big question, ask *before* you start working on the problem. It's best to be clear early on for the big picture. Little details can be fixed later if needed.
-
