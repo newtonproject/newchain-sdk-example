@@ -35,7 +35,7 @@ with open("/tmp/UTC--2019-04-01T15-45-13.671000000Z--0c0be2750b4cf6664efb7da8855
     jsonvalue = json.load(load_f)
 
 w3.eth.account.chain_id=ClientVersion
-#
+ 
 Account = w3.eth.account.privateKeyToAccount(w3.eth.account.decrypt(jsonvalue,"123qwe"))
 print("getTransactionCount of [%s] is: %s" % (From,w3.eth.getTransactionCount(From)))
 
