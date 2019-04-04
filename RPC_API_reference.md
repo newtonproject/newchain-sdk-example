@@ -2,12 +2,7 @@
 
 ## RPC Config
 
-```
-testnet:
-https://rpc2.newchain.cloud.diynova.com
-https://rpc1.newchain.newtonproject.org
-https://rpc3.newchain.cloud.diynova.com
-```
+Testnet: [https://rpc1.newchain.newtonproject.org]
 
 ## get_block_height
 

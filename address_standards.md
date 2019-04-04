@@ -2,23 +2,28 @@
 
 This documentation explains the address identification system used by NewChain, the blockchain behind Newton's ecosystem.
 
-NewChain addresses are constructed from a unique Newton identifier (NEW), [chain ID](chain_id.md), actual address, and a checksum to reduce errors. 
+NewChain addresses are constructed from :
+
+* Newton's unique identifier (NEW)
+* [Chain ID](chain_id.md)
+* Actual address
+* Checksum to reduce errors. 
 
 An example NewChain address is:
 
 ```
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW17xAWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 ```
 
 The following items are encoded:
 
 3-character Newton identifier:
 
-<b>NEW</b>132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+<b>NEW</b>17xAWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 4-byte [chain ID](chain_id.md):
 
-NEW<b>132</b>AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW<b>17x</b>AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 Actual address: 
 
@@ -64,7 +69,7 @@ We take the last 40 characters for the hashed public key...:
 AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 ```
 
-We then combine this with our network ID (NEW) and chain ID (132) to get the final NewChain address:
+We then combine this with our network ID (NEW) and chain ID (17x) to get the final NewChain address:
 
 ```
 NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
@@ -74,6 +79,6 @@ NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 NewChain lives in a multi-chain world. For end users, it's perfectly common to transfer value from an address on network A to an address on network B.
 
-The Bitcoin protocol uses Base58Check encoding to prevent users sending value off-network, while Ethereum uses a raw hex version of the address. Qtum, NEO and Ontology use similar encoding to Bitcoin. EOS is slightly different, but almost similar to Bitcoin.
+The Bitcoin protocol uses Base58Check encoding to prevent users sending value off-network, while Ethereum uses a raw hex version of the address. 
 
 At present this system works with NewChain, but will also work with other blockchains in the future.
