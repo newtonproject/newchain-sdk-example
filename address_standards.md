@@ -2,36 +2,36 @@
 
 This documentation explains the address identification system used by NewChain, the blockchain behind Newton's ecosystem.
 
-NewChain addresses are constructed from :
+NewChain addresses are 39 characters long, and constructed from:
 
 * Newton's unique identifier (NEW)
-* [Chain ID](chain_id.md)
+* [Chain ID](chain_id.md) - you can choose from testnet or mainnet
 * Actual address
-* Checksum to reduce errors. 
+* Checksum to reduce errors 
 
 An example NewChain address is:
 
 ```
-NEW17xAWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW182X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 ```
 
 The following items are encoded:
 
 3-character Newton identifier:
 
-<b>NEW</b>17xAWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+<b>NEW</b>182X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 
-4-byte [chain ID](chain_id.md):
+[Chain ID](chain_id.md) (maximum of 4 bytes):
 
-NEW<b>17x</b>AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW<b>182</b>X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 
 Actual address: 
 
-NEW132A<b>WeEvHXTLWbTGVwvXpCjCcfv1uoiF9</b>UK6K
+NEW182X<b>4BUrUViiVZUMibXgjFy77Z8M2g5o</b>kr2B
 
 Four bytes (32 bits) of SHA3-based checksum: 
 
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9<b>UK6K</b>
+NEW182X4BUrUViiVZUMibXgjFy77Z8M2g5o<b>kr2B</b>
 
 (The last four bytes of the SHA3-based error checking code reduce the accidental address errors which occur in Ethereum.)
 
