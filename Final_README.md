@@ -1,23 +1,50 @@
 # NewChain SDK
 
-This document describes how to get started with Newton's NewChain SDK.
+This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](./examples) folder
 
-## Node.js
+For more detailed reference information, please check:
 
-1. Clone our git repository
+* [RPC and API reference](RPC_API_reference.md)
+* [Chain IDs](chain_id.md) for devnet, testnet, and mainnet ID codes
+* [Address standards](address_standards.md) for NewChain address standards
+
+## Running Test Code
+
+### Node.js
 
 ```sh
-git clone git@gitlab.newtonproject.org:alexcg/newchain-sdk-example.git
-```
-
-2. Run the tests
-
-```sh
-cd nodesdk
+cd examples/node
 npm install --save
 node index.js
 ```
 
-## Python
+### Python
 
-## Java
+```bash
+cd examples/python/test2
+pip install -r requirements.txt
+```
+
+#### Create account
+
+```bash
+python tx.py create
+```
+
+#### Check balance
+
+```bash
+python tx.py balance 0x0286a28b49b3462252e3162a982ef28a8a8611dc
+```
+
+#### Pay
+
+```bash
+python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549E368AcaFdCAE786BB93D98379f1D1561a29 --value 1 --rpc https://devnet.newchain.cloud.diynova.com --value 100
+```
+### Java
+
+## Reference
+
+* [`Web3j` sample project](https://gitlab.newtonproject.org/lixuan/web3j-example)
+* [Jar files](https://release.cloud.diynova.com/web3j/)

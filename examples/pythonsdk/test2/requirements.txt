@@ -1,3 +1,0 @@
-newchain-account==0.2.4
-newchain-web3==0.1.0
-click

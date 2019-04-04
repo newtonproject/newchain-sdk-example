@@ -1,24 +1,20 @@
+# NewChain IDs for Different Environments
 
-# Chain ID for different environment
-
-| Environment | Chain ID | String in NEW Address
+| Environment | Chain ID | String in NEW Address |
 | --- | --- | --- |
 | MainNet | 1012 | 182 |
 | TestNet | 1007 | 17z |
 | BetaNet | 1007 | 17z |
 | DevNet | 1002 | 17x |
 
+## NewAddress Creation Rules
 
-### NewAddress Creation Rules:
-
-1. Get hex string of Chain ID above
+1. Get hex string of the NewChain ID above
 2. Combine the hex string and the eth address (without '0x')
-3. Get the Base58Check-encoded string from the step 2 string
-4. Combine NEW and the Base58Check-encoded string
+3. Get the Base58Check-encoded string from the string you created in step 2
+4. Combine the string ```NEW``` and the Base58Check-encoded string from step 3
 
-Since the chain ID is different in different environments, we can identify the environment of a NEW address based on the specific part of string in the new address which is created from the chain id.
-
-
+Since the chain ID is different in different environments, we can identify the environment of a NEW address based on the specific part of string in the NEW address which is created from the chain ID.
 
 ```
 /// ios Code Sample to create NEW Address

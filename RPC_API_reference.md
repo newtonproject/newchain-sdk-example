@@ -1,6 +1,6 @@
 # NewChain RPC API Reference
 
-### RPC Config
+## RPC Config
 
 ```
 testnet:
