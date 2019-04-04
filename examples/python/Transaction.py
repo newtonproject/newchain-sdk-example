@@ -26,7 +26,7 @@ def NewToEth(str):
 
 From = w3.toChecksumAddress(NewToEth("NEW17zDT6sQYPCATtJZ3QpPoR2yW8aGBc2hS3MT")) #/tmp/wallet
 TO = w3.toChecksumAddress(NewToEth("NEW17zNNCR9ouLnVMktE8iHBwaPZJh14iK3ghGU"))
-print("GasPrice: %s" % w3.eth.gasPrice)
+print("Gas Price: %s" % w3.eth.gasPrice)
 
 print("From Balance: %s" % w3.eth.getBalance(From))
 print("To Balance: %s" % w3.eth.getBalance(TO))
