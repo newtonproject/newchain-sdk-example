@@ -2,7 +2,7 @@ const newchainWeb3 = require("newchain-web3");
 const newTx = require("newchainjs-tx");
 
 // config rpc url
-const testRpc = "https://rpc3.newchain.cloud.diynova.com";
+const testRpc = "https://rpc1.newchain.newtonproject.org";
 
 // config chain ID
 const testChainId = 1007;
