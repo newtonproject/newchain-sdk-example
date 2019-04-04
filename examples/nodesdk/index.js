@@ -32,7 +32,7 @@ signUseTx();
 
 function signUseTx() {
     var value = 1100200;
-    web3.eth.getBalance(address).then(console.log);
+    web3.eth.getBalance(address).then(console.log).catch(new Function());
     web3.eth.getTransactionCount(address).then(
         nonce => {
             console.log("Nonce:" + nonce);
@@ -59,9 +59,9 @@ function signUseTx() {
                     const serializedTx = tx.serialize();
                     const raw = "0x" + serializedTx.toString("hex");
                     console.log(raw);
-                    web3.eth.sendSignedTransaction(raw).on("receipt", console.log);
-                });
-            });
+                    web3.eth.sendSignedTransaction(raw).on("receipt", console.log).catch(new Function());
+                }).catch(new Function());
+            }).catch(new Function());
         }
     );
 }
