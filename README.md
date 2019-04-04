@@ -1,33 +1,50 @@
-# NewChain SDK Plan
+# NewChain SDK
 
-This repo is to coordinate documentation for the NewChain SDK. We are doing this to help exchanges list NEW tokens on their exchange.
+This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](./examples) folder
 
+For more detailed reference information, please check:
 
-## Deadlines
+* [RPC and API reference](RPC_API_reference.md)
+* [Chain IDs](chain_id.md) for devnet, testnet, and mainnet ID codes
+* [Address standards](address_standards.md) for NewChain address standards
 
-* Wednesday 3 April 2019, 18:00 - documentation, reference materials, and tutorials drafts finished.
-* Thursday 3 April 2019, 18:00 - documentation polished and confirmed.
-* Friday 3 April 2019, 18:00 - documentation hosted online on Newton's documentation platform.
+## Running Test Code
 
-## Tasks
+### Node.js
 
-* ~~NodeJS function calls - Pony~~ - DONE
-* ~~Java function calls - Li Xuan~~ - DONE
-* ~~Python function calls - Zhang Zetian~~ - DONE
-* Documentation check - @alexcg
-* Documentation polishing - @alexcg
-* ~~Node locations - @xiawu~~ - DONE
-* Get docs.newtonproject.org connected - @xiawu
-* Get gitbook running on docs.newtonproject.org - @alexcg or @xiawu
+```sh
+cd examples/node
+npm install --save
+node index.js
+```
 
-## Documentation Style
+### Python
 
-Please refer to [our style guide](example_doc.md). If you have any questions, please ask @alexcg
+```bash
+cd examples/python/test2
+pip install -r requirements.txt
+```
 
-## Workflow
+#### Create account
 
-Work via Gitlab as much as possible!
+```bash
+python tx.py create
+```
 
-* If there is a problem or bug, raise an issue on GitLab.
-* Don't ask if your work is okay - commit it, make a merge request, and THEN ask your team to check.
-* But if you have a big question, ask *before* you start working on the problem. It's best to be clear early on for the big picture. Little details can be fixed later if needed.
+#### Check balance
+
+```bash
+python tx.py balance 0x0286a28b49b3462252e3162a982ef28a8a8611dc
+```
+
+#### Pay
+
+```bash
+python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549E368AcaFdCAE786BB93D98379f1D1561a29 --value 1 --rpc https://devnet.newchain.cloud.diynova.com --value 100
+```
+### Java
+
+## Reference
+
+* [`Web3j` sample project](https://gitlab.newtonproject.org/lixuan/web3j-example)
+* [Jar files](https://release.cloud.diynova.com/web3j/)
