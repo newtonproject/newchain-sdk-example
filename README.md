@@ -8,7 +8,9 @@ For more detailed reference information, please check:
 * [Chain IDs](chain_id.md) for devnet, testnet, and mainnet ID codes
 * [Address standards](address_standards.md) for NewChain address standards
 
-## Running Test Code
+## Running Example Code
+
+All example code is stored in the [examples](examples) folder.
 
 ### Node.js
 
