@@ -14,6 +14,12 @@ All example code is stored in the [examples](examples) folder.
 
 ### Node.js
 
+NewChain's Javascript library can be downloaded from [NPM](https://www.npmjs.com/package/newchain-web3)
+
+```
+npm install newchain-web3
+```
+
 ```sh
 cd examples/node
 npm install --save
@@ -21,6 +27,12 @@ node index.js
 ```
 
 ### Python
+
+NewChain's Python library can be downloaded from [PyPI](https://pypi.org/project/newchain-web3/)
+
+```
+pip install newchain-web3
+```
 
 ```bash
 cd examples/python/test2

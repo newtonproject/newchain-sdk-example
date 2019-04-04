@@ -2,7 +2,7 @@
 
 ## RPC Config
 
-Testnet: [https://rpc1.newchain.newtonproject.org]
+Testnet: [https://rpc1.newchain.newtonproject.org](https://pypi.org/project/newchain-web3/)
 
 ## get_block_height
 
