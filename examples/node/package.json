@@ -1,0 +1,17 @@
+{
+  "name": "new3j",
+  "version": "1.0.0",
+  "description": "web3j for newpay",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "weixuefeng@lubangame.com",
+  "license": "ISC",
+  "dependencies": {
+    "newchain-web3": "^0.1.1",
+    "newchain-web3-accounts": "^0.1.0",
+    "newchainjs-tx": "^0.1.1",
+    "newchainjs-util": "^0.1.1"
+  }
+}
