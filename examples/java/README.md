@@ -1,10 +1,6 @@
 NewChain SDK for java
 ==================================
 
-# Where to Get the Example
-A `Web3j` sample project is available here and that demonstrates a number of core features:  
-https://gitlab.newtonproject.org/lixuan/web3j-example
-
 # How to Get the Jars
 Download address：https://release.cloud.diynova.com/web3j/  
 Latest version：4.1.1  
