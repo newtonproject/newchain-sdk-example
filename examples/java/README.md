@@ -2,7 +2,7 @@ NewChain SDK for java
 ==================================
 
 # How to Get the Jars
-Download address：https://release.cloud.diynova.com/web3j/  
+Download address：https://gitlab.newtonproject.org/alexcg/master/blob/patch-5-modify/examples/java/web3j-4.1.1.zip
 Latest version：4.1.1  
 # How to Start
 ## Get a Web3j Instance
