@@ -2,19 +2,15 @@ const newchainWeb3 = require("newchain-web3");
 const newTx = require("newchainjs-tx");
 
 // config rpc url
-const DevRpc = "https://devnet.newchain.cloud.diynova.com";
-const testRpc = "https://devnet.newchain.cloud.diynova.com";
-const mainRpc = "tbd";
+const testRpc = "https://rpc1.newchain.newtonproject.org";
 
 // config chain ID
-const devChainId = 1002;
 const testChainId = 1007;
-const mainChainId = 1012;
 
 /**
  * generate the account, you can get your hex address, and your privateKey.
  */
-const web3 = new newchainWeb3(DevRpc);
+const web3 = new newchainWeb3(testRpc);
 const account = new web3.eth.accounts.create();
 
 console.log(account.address);
@@ -52,7 +48,7 @@ function signUseTx() {
                         to: toAddress, 
                         value: convertHexString(value), 
                         data: '',
-                        chainId: devChainId
+                        chainId: testChainId
                     };
                     const tx = new newTx(txParams);
                     tx.sign(privBuffer);
