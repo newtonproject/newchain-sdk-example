@@ -35,7 +35,7 @@ pip install newchain-web3
 ```
 
 ```bash
-cd examples/python/test2
+cd examples/python/test
 pip install -r requirements.txt
 ```
 
