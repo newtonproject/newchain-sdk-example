@@ -8,7 +8,7 @@ const testRpc = "https://rpc1.newchain.newtonproject.org";
 const mainRpc = "tbd";
 
 // config chain ID
-const devChainId = 1002;
+const devChainId = 1007;
 const testChainId = 1007;
 const mainChainId = 1012;
 
@@ -35,13 +35,13 @@ testConvertAddress();
 
 function testConvertAddress() {
     var newAddress = "NEW17zGziJeWdpN8YTQ94kDrAqC8rDaTmw27yMK";
-    console.log("NEW Address is:" + hexAddress2NewAddress(address, testChainId));
-    console.log("Hex Address is:" + newAddress2HexAddress(newAddress));
+    console.log("NEW Address is: " + hexAddress2NewAddress(address, testChainId));
+    console.log("Hex Address is: " + newAddress2HexAddress(newAddress));
 }
 
 function signUseTx() {
     var value = 1100200;
-    web3.eth.getBalance(address).then(console.log).catch(new Function());
+    web3.eth.getBalance(address).then(balance => { console.log("Balance is:" + balance); }).catch(new Function());
     web3.eth.getTransactionCount(address).then(
         nonce => {
             console.log("Nonce: " + nonce);
@@ -66,9 +66,9 @@ function signUseTx() {
                     const tx = new newTx(txParams);
                     tx.sign(privBuffer);
                     const serializedTx = tx.serialize();
-                    const raw = "Raw serialized transaction: " + "0x" + serializedTx.toString("hex");
-                    console.log(raw);
-                    web3.eth.sendSignedTransaction(raw).on("receipt", console.log).catch(new Function());
+                    const raw = "0x" + serializedTx.toString("hex");
+                    console.log("Raw serialized transaction: " + raw);
+                    web3.eth.sendSignedTransaction(raw).on('receipt', receipt => console.log("Receipt: "+ receipt)).catch(new Function());
                 }).catch(new Function());
             }).catch(new Function());
         }
@@ -100,13 +100,11 @@ function hexAddress2NewAddress(hexAddress, chainId) {
     if(hexAddress.startsWith("0x")) {
         hexAddress = hexAddress.slice(2);
     }
-    console.log("hex:" + hexAddress);
     var PREFIX = "NEW";
     var data = chainId.toString(16).slice(-8) + hexAddress;
     if(data.length % 2 != 0) {
         data = "0" + data;
     }
-    console.log("data:" + data);
     return PREFIX + base58check.encode(data);
 }
 
