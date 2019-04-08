@@ -8,9 +8,9 @@
 @copyright: 2018-2019 Newton Foundation. All rights reserved.
 """
 
-from newchain_web3 import Web3, HTTPProvider
 import base58
 import json
+from newchain_web3 import Web3, HTTPProvider
 
 w3 = Web3(HTTPProvider('https://rpc1.newchain.newtonproject.org/'))
 
