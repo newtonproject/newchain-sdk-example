@@ -1,8 +1,6 @@
 /**
   * Java example for NewChain SDK
-  * @version 1
-  * @author lixuan@diynova.com
-  * @copyright (c) 2016 Beijing ShenJiangHuDong Technology Co., Ltd. All rights reserved.
+  * @author lxwinterfall@163.com
   */
 
 import org.web3j.crypto.CipherException;
