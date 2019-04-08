@@ -2,31 +2,36 @@
 
 This documentation explains the address identification system used by NewChain, the blockchain behind Newton's ecosystem.
 
-NewChain addresses are constructed from a unique Newton identifier (NEW), [chain ID](chain_id.md), actual address, and a checksum to reduce errors. 
+NewChain addresses are 39 characters long, and constructed from:
+
+* Newton's unique identifier (NEW)
+* [Chain ID](chain_id.md) - you can choose from testnet or mainnet
+* Actual address
+* Checksum to reduce errors 
 
 An example NewChain address is:
 
 ```
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW182X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 ```
 
 The following items are encoded:
 
 3-character Newton identifier:
 
-<b>NEW</b>132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+<b>NEW</b>182X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 
-4-byte [chain ID](chain_id.md):
+[Chain ID](chain_id.md) (maximum of 4 bytes):
 
-NEW<b>132</b>AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+NEW<b>182</b>X4BUrUViiVZUMibXgjFy77Z8M2g5okr2B
 
 Actual address: 
 
-NEW132A<b>WeEvHXTLWbTGVwvXpCjCcfv1uoiF9</b>UK6K
+NEW182X<b>4BUrUViiVZUMibXgjFy77Z8M2g5o</b>kr2B
 
 Four bytes (32 bits) of SHA3-based checksum: 
 
-NEW132AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9<b>UK6K</b>
+NEW182X4BUrUViiVZUMibXgjFy77Z8M2g5o<b>kr2B</b>
 
 (The last four bytes of the SHA3-based error checking code reduce the accidental address errors which occur in Ethereum.)
 
@@ -64,7 +69,7 @@ We take the last 40 characters for the hashed public key...:
 AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 ```
 
-We then combine this with our network ID (NEW) and chain ID (132) to get the final NewChain address:
+We then combine this with our network ID (NEW) and chain ID (17x) to get the final NewChain address:
 
 ```
 NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
@@ -74,6 +79,6 @@ NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
 
 NewChain lives in a multi-chain world. For end users, it's perfectly common to transfer value from an address on network A to an address on network B.
 
-The Bitcoin protocol uses Base58Check encoding to prevent users sending value off-network, while Ethereum uses a raw hex version of the address. Qtum, NEO and Ontology use similar encoding to Bitcoin. EOS is slightly different, but almost similar to Bitcoin.
+The Bitcoin protocol uses Base58Check encoding to prevent users sending value off-network, while Ethereum uses a raw hex version of the address. 
 
 At present this system works with NewChain, but will also work with other blockchains in the future.

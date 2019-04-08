@@ -1,32 +1,63 @@
-# NewChain SDK Plan
+# NewChain SDK
 
-This repo is to coordinate documentation for the NewChain SDK. We are doing this to help exchanges list NEW tokens on their exchange.
+This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](./examples) folder
 
-## Deadlines
+For more detailed reference information, please check:
 
-* Wednesday 3 April 2019, 18:00 - documentation, reference materials, and tutorials drafts finished.
-* Thursday 3 April 2019, 18:00 - documentation polished and confirmed.
-* Friday 3 April 2019, 18:00 - documentation hosted online on Newton's documentation platform.
+* [RPC and API reference](RPC_API_reference.md)
+* [Chain IDs](chain_id.md) for devnet, testnet, and mainnet ID codes
+* [Address standards](address_standards.md) for NewChain address standards
 
-## Tasks
+## Running Example Code
 
-* NodeJS function calls - Pony
-* Java function calls - Li Xuan
-* Python function calls - Zhang Zetian
-* Documentation polishing - @alexcg
-* Node locations - @xiawu
-* Get docs.newtonproject.org connected - @xiawu
-* Get gitbook running on docs.newtonproject.org - @alexcg or @xiawu
+All example code is stored in the [examples](examples) folder.
 
-## Documentation Style
+### Node.js
 
-Please refer to [our style guide](example_doc.md). If you have any questions, please ask @alexcg
+NewChain's Javascript library can be downloaded from [NPM](https://www.npmjs.com/package/newchain-web3)
 
-## Workflow
+```
+npm install newchain-web3
+```
 
-Work via Gitlab as much as possible!
+```sh
+cd examples/node
+npm install --save
+node index.js
+```
 
-* If there is a problem or bug, raise an issue on GitLab.
-* Don't ask if your work is okay - commit it, make a merge request, and THEN ask your team to check.
-* But if you have a big question, ask *before* you start working on the problem. It's best to be clear early on for the big picture. Little details can be fixed later if needed.
+### Python
 
+NewChain's Python library can be downloaded from [PyPI](https://pypi.org/project/newchain-web3/)
+
+```
+pip install newchain-web3
+```
+
+```bash
+cd examples/python/test
+pip install -r requirements.txt
+```
+
+#### Create account
+
+```bash
+python tx.py create
+```
+
+#### Check balance
+
+```bash
+python tx.py balance 0x0286a28b49b3462252e3162a982ef28a8a8611dc
+```
+
+#### Pay
+
+```bash
+python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549E368AcaFdCAE786BB93D98379f1D1561a29 --value 1 --rpc https://rpc1.newchain.newtonproject.org -value 100
+```
+### Java
+
+NewChain`s Java library can be downloaded [HERE](examples/java/web3j-4.1.1.zip).  
+The latest version is 4.1.1.  
+Just download directly and import as libs.
