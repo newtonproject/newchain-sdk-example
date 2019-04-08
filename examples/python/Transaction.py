@@ -49,9 +49,7 @@ signed_txn = Account.signTransaction(
     gas=Gas,
     to=To,
     value=1,
-    # data=b'',
     chainId=ClientVersion)
-    # private_key=w3.eth.account.decrypt(jsonvalue,"123qwe")
 )
 
 w3.eth.sendRawTransaction(signed_txn.rawTransaction)
