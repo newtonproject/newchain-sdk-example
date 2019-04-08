@@ -63,16 +63,27 @@ We take the last 40 characters for the hashed public key...:
 54db4d39cedeaf78af1d15aa540570ca168fe303
 ```
 
-...and run it through the Base58Check algorithm:
+...convert the chainID(1012) to hex string:
 
 ```
-AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+3f4
 ```
 
-We then combine this with our network ID (NEW) and chain ID (17x) to get the final NewChain address:
+...and combine this with our hex address string:
 
 ```
-NEW123AWeEvHXTLWbTGVwvXpCjCcfv1uoiF9UK6K
+3f454db4d39cedeaf78af1d15aa540570ca168fe303
+```
+
+...run with base58check encode
+```
+182Ln6vMMXGRwPbESbyGCxc3U3sPU1PrcKw8
+```
+
+We then combine this with our network ID (NEW) base58check's result to get the final NewChain address:
+
+```
+NEW182Ln6vMMXGRwPbESbyGCxc3U3sPU1PrcKw8
 ```
 
 ## Background Reading
