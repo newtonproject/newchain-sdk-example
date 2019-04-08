@@ -25,11 +25,11 @@ def NewToEth(str):
 	return "0x%s" % base58.b58decode_check(str[3:]).hex().lower()[6:]
 
 From = w3.toChecksumAddress(NewToEth("NEW17zDT6sQYPCATtJZ3QpPoR2yW8aGBc2hS3MT")) #/tmp/wallet
-TO = w3.toChecksumAddress(NewToEth("NEW17zNNCR9ouLnVMktE8iHBwaPZJh14iK3ghGU"))
+To = w3.toChecksumAddress(NewToEth("NEW17zNNCR9ouLnVMktE8iHBwaPZJh14iK3ghGU"))
 print("Gas Price: %s" % w3.eth.gasPrice)
 
 print("From Balance: %s" % w3.eth.getBalance(From))
-print("To Balance: %s" % w3.eth.getBalance(TO))
+print("To Balance: %s" % w3.eth.getBalance(To))
 
 with open("/tmp/UTC--2019-04-01T15-45-13.671000000Z--0c0be2750b4cf6664efb7da885507654f70f38b5.json") as load_f:
     jsonvalue = json.load(load_f)
@@ -39,15 +39,15 @@ w3.eth.account.chain_id=ClientVersion
 Account = w3.eth.account.privateKeyToAccount(w3.eth.account.decrypt(jsonvalue,"123qwe"))
 print("getTransactionCount of [%s] is: %s" % (From,w3.eth.getTransactionCount(From)))
 
-GAS = w3.eth.estimateGas({'to': TO, 'from': From, 'value': 1})
-print("GAS: %s" % GAS)
+Gas = w3.eth.estimateGas({'to': To, 'from': From, 'value': 1})
+print("Gas: %s" % Gas)
 
 signed_txn = Account.signTransaction(
     dict(
     nonce=0,
     gasPrice=w3.eth.gasPrice,
-    gas=GAS,
-    to=TO,
+    gas=Gas,
+    to=To,
     value=1,
     # data=b'',
     chainId=ClientVersion)
