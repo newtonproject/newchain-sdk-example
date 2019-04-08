@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from newchain_web3 import Web3, HTTPProvider, Account
 import os
 import errno
 import json
 import click
 import datetime
+from newchain_web3 import Web3, HTTPProvider, Account
 
 @click.group()
 def main():
