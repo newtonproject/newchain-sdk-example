@@ -1,7 +1,9 @@
 /**
   * Java example for NewChain SDK
   * @author lxwinterfall@163.com
-  */
+  * @copyright 2018-2019 Newton Foundation. All rights reserved.
+*/
+
 
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;

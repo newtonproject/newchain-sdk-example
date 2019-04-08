@@ -3,9 +3,9 @@
 
 """
 @author: Tang Smith
-@contact: zzetian@cn.ibm.com
 @software: PyCharm
 @time: 2019-04-01 21:51
+@copyright: 2018-2019 Newton Foundation. All rights reserved.
 """
 
 from newchain_web3 import Web3, HTTPProvider
