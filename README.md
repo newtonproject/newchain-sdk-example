@@ -58,6 +58,6 @@ python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549
 ```
 ### Java
 
-NewChain`s Java library can be downloaded [HERE](https://release.cloud.diynova.com/web3j/).  
+NewChain`s Java library can be downloaded [HERE](examples/java/web3j-4.1.1.zip).  
 The latest version is 4.1.1.  
 Just download directly and import as libs.
