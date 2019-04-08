@@ -10,7 +10,7 @@ from newchain_web3 import Web3, HTTPProvider, Account
 
 @click.group()
 def main():
-    """Simple program that test newchain web3.py"""
+    """Simple program that tests newchain web3.py"""
 
 
 def keyFileName(keyAddr):
@@ -22,8 +22,8 @@ def keyFileName(keyAddr):
 
 
 @main.command()
-@click.option('--path', default="wallet", help='Path to store keystore file.')
-@click.option('--password', prompt='Enter the password to encrypt the keystore file',
+@click.option('--path', default="wallet", help='Path to store the keystore file.')
+@click.option('--password', prompt='Enter a password to encrypt the keystore file:',
               hide_input=True,
               confirmation_prompt=True,
               help='The password to encrypt the keystore file.')
@@ -47,7 +47,7 @@ def create(path, password):
 
 @main.command()
 @click.argument('address')
-@click.option('--rpc', help='The rpc url of the NewChain node.', required=True)
+@click.option('--rpc', help='NewChain node RPC URL', required=True)
 def balance(address, rpc):
     """Get the balance of the address"""
     web3 = Web3(HTTPProvider(rpc))
@@ -74,7 +74,7 @@ def get_address_from_wallet(address, path):
 @click.option('--dest', required=True, help='Path to store keystore file.')
 @click.option('--value', required=True, help='Path to store keystore file.')
 @click.option('--data', help='Path to store keystore file.')
-@click.option('--rpc', help='The rpc url of the NewChain node.')
+@click.option('--rpc', help='The RPC URL Of the NewChain node.')
 @click.option('--password', hide_input=True, help='The password to encrypt the keystore file.')
 def pay(path, src, dest, value, data, rpc, password):
     """Pay NEW to address"""
