@@ -2,19 +2,23 @@ const newchainWeb3 = require("newchain-web3");
 const newTx = require("newchainjs-tx");
 
 // config rpc url
-const testRpc = "https://rpc1.newchain.newtonproject.org";
+const DevRpc = "https://devnet.newchain.cloud.diynova.com";
+const testRpc = "https://devnet.newchain.cloud.diynova.com";
+const mainRpc = "tbd";
 
 // config chain ID
+const devChainId = 1002;
 const testChainId = 1007;
+const mainChainId = 1012;
 
 /**
  * generate the account, you can get your hex address, and your privateKey.
  */
-const web3 = new newchainWeb3(testRpc);
+const web3 = new newchainWeb3(DevRpc);
 const account = new web3.eth.accounts.create();
 
-console.log(account.address);
-console.log(account.privateKey);
+console.log("Account address: " + account.address);
+console.log("Account private key: " + account.privateKey);
 
 /**
  * define the address and private Key
@@ -31,16 +35,16 @@ function signUseTx() {
     web3.eth.getBalance(address).then(console.log).catch(new Function());
     web3.eth.getTransactionCount(address).then(
         nonce => {
-            console.log("Nonce:" + nonce);
+            console.log("Nonce: " + nonce);
             web3.eth.getGasPrice().then(gasPrice => {
-                console.log("Gas price:" + gasPrice);
+                console.log("Gas price: " + gasPrice);
                 web3.eth.estimateGas(
                     {
                         to: toAddress,
                         data: ""
                     }
                 ).then(gasLimit => {
-                    console.log("Gas limit:" + gasLimit);
+                    console.log("Gas limit: " + gasLimit);
                     const txParams = {
                         nonce: convertHexString(nonce),
                         gasPrice: convertHexString(gasPrice), 
@@ -48,12 +52,12 @@ function signUseTx() {
                         to: toAddress, 
                         value: convertHexString(value), 
                         data: '',
-                        chainId: testChainId
+                        chainId: devChainId
                     };
                     const tx = new newTx(txParams);
                     tx.sign(privBuffer);
                     const serializedTx = tx.serialize();
-                    const raw = "0x" + serializedTx.toString("hex");
+                    const raw = "Raw serialized transaction: " + "0x" + serializedTx.toString("hex");
                     console.log(raw);
                     web3.eth.sendSignedTransaction(raw).on("receipt", console.log).catch(new Function());
                 }).catch(new Function());
