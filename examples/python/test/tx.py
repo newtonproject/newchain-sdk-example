@@ -3,18 +3,24 @@
 
 import os
 import errno
-import json
-import click
 import datetime
+import json
+
+import base58
+import binascii
+import click
+
 from newchain_web3 import Web3, HTTPProvider, Account
+import eth_utils as utils
+
 
 @click.group()
 def main():
     """Simple program that tests newchain web3.py"""
 
 
-def keyFileName(keyAddr):
-    address = keyAddr.lower()
+def key_file_name(key_address):
+    address = key_address.lower()
     if address.startswith('0x'):
         address = address[2:]
     ts = datetime.datetime.utcnow()
@@ -23,7 +29,7 @@ def keyFileName(keyAddr):
 
 @main.command()
 @click.option('--path', default="wallet", help='Path to store the keystore file.')
-@click.option('--password', prompt='Enter a password to encrypt the keystore file:',
+@click.option('--password', prompt='Enter a password to encrypt the keystore file',
               hide_input=True,
               confirmation_prompt=True,
               help='The password to encrypt the keystore file.')
@@ -31,7 +37,7 @@ def create(path, password):
     """Create new address"""
     a = Account.create()
     keystore = a.encrypt(password)
-    filename = "{}/{}".format(path, keyFileName(a.address))
+    filename = "{}/{}".format(path, key_file_name(a.address))
     if not os.path.exists(os.path.dirname(filename)):
         try:
             os.makedirs(os.path.dirname(filename))
@@ -52,8 +58,8 @@ def balance(address, rpc):
     """Get the balance of the address"""
     web3 = Web3(HTTPProvider(rpc))
     a = web3.toChecksumAddress(address)
-    balance = web3.eth.getBalance(a)
-    b = web3.fromWei(balance, 'ether')
+    balance_wei = web3.eth.getBalance(a)
+    b = web3.fromWei(balance_wei, 'ether')
     print("The balance of {} is {} NEW.".format(a, b))
 
 
@@ -63,9 +69,9 @@ def get_address_from_wallet(address, path):
         address = address[2:]
     for filename in os.listdir(path):
         with open(path + "/" + filename) as load_f:
-            jsonvalue = json.load(load_f)
-            if address == jsonvalue['address'].lower():
-                return jsonvalue
+            json_value = json.load(load_f)
+            if address == json_value['address'].lower():
+                return json_value
 
 
 @main.command()
@@ -112,16 +118,61 @@ def pay(path, src, dest, value, data, rpc, password):
 
     Account.chain_id = chain_id
 
-
     try:
         a = Account.privateKeyToAccount(Account.decrypt(json_value, password.encode('utf-8')))
 
         sign_tx = a.signTransaction(tx)
-        hash = web3.eth.sendRawTransaction(sign_tx.rawTransaction)
-        print(hash.hex())
+        tx_hash = web3.eth.sendRawTransaction(sign_tx.rawTransaction)
+        print(tx_hash.hex())
     except ValueError:
         print("error")
         pass
+
+
+def hex_to_new(address, chain_id):
+    return encode_new_address(address, chain_id)
+
+
+def is_new_address(address):
+    return len(address) == 39 and address[:3] == "NEW"
+
+
+def new_to_hex(address, chain_id):
+    return decode_new_address(address, chain_id)
+
+
+def encode_new_address(address, chain_id):
+    address_data = address
+    if address_data.startswith('0x'):
+        address_data = address_data[2:]
+    hex_chain_id = hex(chain_id)[2:][-8:]
+    if (len(hex_chain_id) % 2) == 1:
+        hex_chain_id = '0' + hex_chain_id
+    num_sum = hex_chain_id + address_data
+    data = base58.b58encode_check(b'\0' + binascii.a2b_hex(num_sum))
+    new_address = 'NEW' + data.decode()
+    return new_address
+
+
+def decode_new_address(address, chain_id):
+    address_data = address[3:]
+    hex_address = base58.b58decode_check(address_data)
+    return hex_address.hex()[-40:]
+
+
+@main.command()
+@click.argument('address')
+@click.option('--rpc', help='NewChain node RPC URL', required=True)
+def convert(address, rpc):
+    """Convert address of NEW"""
+    web3 = Web3(HTTPProvider(rpc))
+    chain_id = int(web3.net.version)
+    if utils.is_address(address):
+        print(hex_to_new(address, chain_id), address)
+    elif is_new_address(address):
+        print(address, new_to_hex(address, chain_id))
+    else:
+        print("Address invalid")
 
 
 if __name__ == '__main__':
