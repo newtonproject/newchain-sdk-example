@@ -32,12 +32,12 @@ node index.js
 
 NewChain's Python library can be downloaded from [PyPI](https://pypi.org/project/newchain-web3/)
 
-```bash
-pip install newchain-web3
-```
+#### Install
 
 ```bash
-cd examples/python/test
+cd examples/python/test/
+virtualenv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
