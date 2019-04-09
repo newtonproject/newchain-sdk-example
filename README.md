@@ -1,5 +1,7 @@
 # NewChain SDK
 
+**Note: This document can be found on both our [documentation website](http://docs.newtonproject.org/en/NewChain/) and [GitHub repository](https://github.com/newtonproject/newchain-sdk-example)**
+
 This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](./examples) folder
 
 For more detailed reference information, please check:
