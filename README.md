@@ -16,7 +16,7 @@ All example code is stored in the [examples](examples) folder.
 
 NewChain's Javascript library can be downloaded from [NPM](https://www.npmjs.com/package/newchain-web3)
 
-```
+```bash
 npm install newchain-web3
 ```
 
@@ -30,7 +30,7 @@ node index.js
 
 NewChain's Python library can be downloaded from [PyPI](https://pypi.org/project/newchain-web3/)
 
-```
+```bash
 pip install newchain-web3
 ```
 
@@ -59,5 +59,8 @@ python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549
 ### Java
 
 NewChain`s Java library can be downloaded [HERE](examples/java/web3j-4.1.1.zip).  
-The latest version is 4.1.1.  
-Just download directly and import as libs.
+Download the directly and import as libs:
+
+```java
+import org.web3j.*
+```
