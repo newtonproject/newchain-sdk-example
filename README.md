@@ -70,3 +70,5 @@ Download it directly and import as libs:
 ```java
 import org.web3j.*
 ```
+
+Please refer to [the Java documentation](examples/java/README.md) for additional information.
