@@ -10,6 +10,15 @@ For more detailed reference information, please check:
 * [Chain IDs](chain_id.md) for devnet, testnet, and mainnet ID codes
 * [Address standards](address_standards.md) for NewChain address standards
 
+## Get Started
+
+Clone our GitLab repo and enter the directory:
+
+```sh
+git clone git@gitlab.newtonproject.org:alexcg/newchain-sdk-example.git
+cd newchain-sdk-example
+```
+
 ## Running Example Code
 
 All example code is stored in the [examples](examples) folder.
