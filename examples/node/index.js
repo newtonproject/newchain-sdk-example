@@ -8,7 +8,7 @@ const testRpc = "https://rpc1.newchain.newtonproject.org";
 const mainRpc = "tbd";
 
 // config chain ID
-const devChainId = 1007;
+const devChainId = 1002;
 const testChainId = 1007;
 const mainChainId = 1012;
 
