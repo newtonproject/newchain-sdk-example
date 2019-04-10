@@ -2,7 +2,7 @@
 
 **Note: This document can be found on both our [documentation website](http://docs.newtonproject.org/en/NewChain/) and [GitHub repository](https://github.com/newtonproject/newchain-sdk-example)**
 
-This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](./examples) folder
+This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](https://gitlab.newtonproject.org/alexcg/newchain-sdk-example/tree/master/examples) folder
 
 For more detailed reference information, please check:
 
@@ -21,7 +21,7 @@ cd newchain-sdk-example
 
 ## Running Example Code
 
-All example code is stored in the [examples](examples) folder.
+All example code is stored in the [examples](https://gitlab.newtonproject.org/alexcg/newchain-sdk-example/tree/master/examples) folder.
 
 ### Node.js
 
@@ -73,7 +73,7 @@ python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549
 ```
 ### Java
 
-NewChain's Java library can be downloaded [HERE](examples/java/web3j-4.1.1.zip).  
+NewChain's Java library can be downloaded [HERE](https://gitlab.newtonproject.org/alexcg/newchain-sdk-example/tree/master/examples/java/web3j-4.1.1.zip).  
 Download it directly and import as libs:
 
 ```java
