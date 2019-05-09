@@ -61,7 +61,7 @@ function signUseTx() {
                         to: toAddress, 
                         value: convertHexString(value), 
                         data: '',
-                        chainId: devChainId
+                        chainId:testChainId 
                     };
                     const tx = new newTx(txParams);
                     tx.sign(privBuffer);
