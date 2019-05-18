@@ -23,6 +23,8 @@ public class Main {
     private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
     //Main Net
     //private final static String rpcUrl = "https://global.rpc.mainnet.newtonproject.org";
+    
+    private final static BigDecimal value = BigDecimal.valueOf(10);
 
     public static void main(String[] args) throws CipherException, IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException {
         Web3j web3 = Web3j.build(new HttpService(rpcUrl));
@@ -84,20 +86,22 @@ public class Main {
         if(!inputChainID.equals(chainID)){
             System.out.println("Wrong input address. Please check the address you input.");
             return;
+        }else{
+            System.out.println("Right address.");
         }
 
         EthGasPrice ethGasPrice = web3.ethGasPrice().send();
         BigInteger gasPrice = ethGasPrice.getGasPrice();
         System.out.println("gasPrice : " + gasPrice);
 
-        Transaction tx = Transaction.createEtherTransaction(fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+        Transaction tx = Transaction.createEtherTransaction(fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
         EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
         BigInteger gasLimit = ethEstimateGas.getAmountUsed();
         System.out.println("gasLimit : " + gasLimit);
 
         // create our transaction
         RawTransaction rawTransaction = RawTransaction.createEtherTransaction(
-                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
 
         // sign & send our transaction
         byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(chainIDStr), credentials);
