@@ -81,7 +81,7 @@ Credentials credentials = WalletUtils.loadCredentials(
 
 Return an `Credentials` instance with keystore information.
 
-### Get eth Address and Transfer to NEW Address
+### Get original Address and Transfer to NEW Address
 
 Get the address of the keystore with the `Credentials` instance:
 
@@ -89,7 +89,7 @@ Get the address of the keystore with the `Credentials` instance:
 String fromAddress = credentials.getAddress();
 ```
 
-Transfer the eth format address into NEW format:
+Transfer the original format address into NEW format:
 
 ```java
 String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
@@ -97,7 +97,7 @@ String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
 
 #### Parameters
 
-* ethAddress(`String`): The eth address you want to transfer.
+* ethAddress(`String`): The original address you want to transfer.
 * chainId(`String`): The chainId (net version) you get above.
 
 #### Return Values
@@ -106,7 +106,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to eth format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#transfer-new-address-to-eth-address)
+* [Transfer from New format address to original format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#transfer-new-address-to-original-address)
 
 ### Get Balance
 
@@ -149,7 +149,7 @@ BigInteger nonce = ethGetTransactionCount.getTransactionCount();
 
 Return the nonce of the account of given address.
 
-### Transfer NEW Address to eth Address
+### Transfer NEW Address to original Address
 
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
@@ -162,11 +162,11 @@ String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
 
 #### Return Values
 
-Return the eth address.
+Return the original address.
 
 #### See Also
 
-* [Transfer from eth format address to NEW format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#get-eth-address-and-transfer-to-new-address)
+* [Transfer from original format address to NEW format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#get-original-address-and-transfer-to-new-address)
 
 ### Get gasPrice
 
