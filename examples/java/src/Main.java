@@ -23,9 +23,6 @@ public class Main {
     private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
     //Main Net
     //private final static String rpcUrl = "https://global.rpc.mainnet.newtonproject.org";
-    
-    //The value you want to transfer
-    private final static BigDecimal value = BigDecimal.valueOf(10);
 
     public static void main(String[] args) throws CipherException, IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException {
         Web3j web3 = Web3j.build(new HttpService(rpcUrl));
@@ -51,10 +48,10 @@ public class Main {
                 "C:\\Files\\wallet\\UTC--2019-03-09T03-20-42.743000000Z--02d9bec4c13aecd197362adf92ed23b00a95d8ab.json");
 
         String fromAddress = credentials.getAddress();
-        System.out.println("address(eth) : " + fromAddress);
+        System.out.println("address(original) : " + fromAddress);
 
-        String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
-        System.out.println("address(NEW) : " + demo);
+        String fromAddressNEWFormat = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
+        System.out.println("address(NEW) : " + fromAddressNEWFormat);
 
         EthGetBalance balance = web3.ethGetBalance(fromAddress, DefaultBlockParameterName.LATEST).send();
         BigInteger b = balance.getBalance();
@@ -68,7 +65,7 @@ public class Main {
 
         //Main net address
         //String newAddress = "NEW182KVqyBnPTxGVhU57krvhTy5i5SQBYecxZh";
-        //String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+        //String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
         //System.out.println("to address : " + toAddress);
 
         //Test net address
@@ -77,9 +74,9 @@ public class Main {
         System.out.println("to address : " + toAddress);
 
         //getChainID() return the chain ID in hex string
-        String addressCahinID = AddressUtil.getChainID(newAddress);
+        String addressChainID = AddressUtil.getChainID(newAddress);
 
-        Integer inputChainID = Integer.parseInt(addressCahinID,16);
+        Integer inputChainID = Integer.parseInt(addressChainID,16);
         System.out.println("input ID : " + inputChainID);
         Integer chainID = Integer.parseInt(chainIDStr);
         System.out.println("chain ID : " + chainID);
@@ -92,6 +89,9 @@ public class Main {
         EthGasPrice ethGasPrice = web3.ethGasPrice().send();
         BigInteger gasPrice = ethGasPrice.getGasPrice();
         System.out.println("gasPrice : " + gasPrice);
+
+        //The value you want to transfer
+        BigDecimal value = BigDecimal.valueOf(10);
 
         Transaction tx = Transaction.createEtherTransaction(fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
         EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
