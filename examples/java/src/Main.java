@@ -50,7 +50,7 @@ public class Main {
         String fromAddress = credentials.getAddress();
         System.out.println("address(eth) : " + fromAddress);
 
-        String demo = AddressUtil.ethAddress2NewAddress(fromAddress, chainIDStr);
+        String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
         System.out.println("address(NEW) : " + demo);
 
         EthGetBalance balance = web3.ethGetBalance(fromAddress, DefaultBlockParameterName.LATEST).send();
@@ -70,7 +70,7 @@ public class Main {
 
         //Test net address
         String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
-        String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+        String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
         System.out.println("to address : " + toAddress);
 
         //getChainID() return the chain ID in hex string
