@@ -98,7 +98,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to original format address.](examples/java#transfer-new-address-to-original-address)
+* [Transfer from New format address to original format address.](#transfer-new-address-to-original-address)
 
 ### Get Balance
 
