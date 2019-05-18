@@ -90,7 +90,7 @@ String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
 
 #### Parameters
 
-* ethAddress(`String`): The original address you want to transfer.
+* originalAddress(`String`): The original address you want to transfer.
 * chainId(`String`): The chainId (net version) you get above.
 
 #### Return Values
@@ -147,6 +147,21 @@ Return the nonce of the account of given address.
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
 String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+
+//getChainID() return the chain ID in hex string
+String addressCahinID = AddressUtil.getChainID(newAddress);
+
+Integer inputChainID = Integer.parseInt(addressCahinID,16);
+System.out.println("input ID : " + inputChainID);
+Integer chainID = Integer.parseInt(chainIDStr);
+System.out.println("chain ID : " + chainID);
+
+if(!inputChainID.equals(chainID)){
+    System.out.println("Wrong input address. Please check the address you input.");
+    return;
+}else{
+    System.out.println("Right address.");
+}
 ```
 
 #### Parameters
@@ -178,7 +193,7 @@ Return the gasPrice.
 
 ### Get GasLimit
 
-Get gas limit with `Web3J.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
+Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
 Transaction tx = Transaction.createEtherTransaction(
