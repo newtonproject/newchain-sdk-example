@@ -79,7 +79,7 @@ String fromAddress = credentials.getAddress();
 Convert the original format address into NEW format:
 
 ```java
-String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
+String fromAddressNEWFormat = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
 ```
 
 #### Parameters
@@ -143,9 +143,9 @@ String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
 String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
 
 //getChainID() return the chain ID in hex string
-String addressCahinID = AddressUtil.getChainID(newAddress);
+String addressChainID = AddressUtil.getChainID(newAddress);
 
-Integer inputChainID = Integer.parseInt(addressCahinID,16);
+Integer inputChainID = Integer.parseInt(addressChainID,16);
 Integer chainID = Integer.parseInt(chainIDStr);
 
 if(!inputChainID.equals(chainID)){
@@ -186,8 +186,7 @@ Return the gasPrice.
 Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
-private final static BigDecimal value = BigDecimal.valueOf(10);
-...
+BigDecimal value = BigDecimal.valueOf(10);
 Transaction tx = Transaction.createEtherTransaction(
             fromAddress, nonce, gasPrice, null, toAddress, value, Convert.Unit.ETHER).toBigInteger());
 EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
