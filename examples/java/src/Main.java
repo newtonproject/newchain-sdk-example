@@ -87,8 +87,6 @@ public class Main {
         if(!inputChainID.equals(chainID)){
             System.out.println("Wrong input address. Please check the address you input.");
             return;
-        }else{
-            System.out.println("Right address.");
         }
 
         EthGasPrice ethGasPrice = web3.ethGasPrice().send();
