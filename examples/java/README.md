@@ -153,8 +153,6 @@ System.out.println("chain ID : " + chainID);
 if(!inputChainID.equals(chainID)){
     System.out.println("Wrong address. Please check the address.");
     return;
-}else{
-    System.out.println("Right address.");
 }
 ```
 
