@@ -67,13 +67,12 @@ Credentials credentials = WalletUtils.loadCredentials(
 
 * password(`String`): The password for the keystore.  
 * source(`String`): The path of the keystore.
-* source(`File`): The keystore instance.
 
 #### Return Values
 
 Return an `Credentials` instance with keystore information.
 
-### Get original Address and Transfer to NEW Address
+### Get original Address and Convert it into NEW Address
 
 Get the address of the keystore with the `Credentials` instance:
 
@@ -81,7 +80,7 @@ Get the address of the keystore with the `Credentials` instance:
 String fromAddress = credentials.getAddress();
 ```
 
-Transfer the original format address into NEW format:
+Convert the original format address into NEW format:
 
 ```java
 String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
@@ -89,7 +88,7 @@ String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
 
 #### Parameters
 
-* originalAddress(`String`): The original address you want to transfer.
+* originalAddress(`String`): The address in original format.
 * chainID(`String`): The chainID you get above.
 
 #### Return Values
@@ -98,7 +97,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to original format address.](#transfer-new-address-to-original-address)
+* [Convert from New format address to original format address.](#convert-new-address-into-original-address)
 
 ### Get Balance
 
@@ -141,7 +140,7 @@ BigInteger nonce = ethGetTransactionCount.getTransactionCount();
 
 Return the nonce of the account of given address.
 
-### Transfer NEW Address to original Address
+### Convert NEW Address into original Address
 
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
@@ -156,7 +155,7 @@ Integer chainID = Integer.parseInt(chainIDStr);
 System.out.println("chain ID : " + chainID);
 
 if(!inputChainID.equals(chainID)){
-    System.out.println("Wrong input address. Please check the address you input.");
+    System.out.println("Wrong address. Please check the address.");
     return;
 }else{
     System.out.println("Right address.");
@@ -165,7 +164,7 @@ if(!inputChainID.equals(chainID)){
 
 #### Parameters
 
-* newAdderss(`String`): The NEW address you want to transfer.
+* newAdderss(`String`): The address in NEW format.
 
 #### Return Values
 
@@ -220,13 +219,13 @@ Return the gasLimit.
 
 The value passed into `Transaction.createEtherTransaction()` is in format of `WEI`(`ISSAC`).  
   
-You can transfer `ETHER` into `WEI`:  
+You can convert `ETHER` into `WEI`:  
 
 ```java
 Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 ETHER / NEW
 ```
 
-Also you can transfer `WEI` into `ETHER`:
+Also you can convert `WEI` into `ETHER`:
 
 ```java
 Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
