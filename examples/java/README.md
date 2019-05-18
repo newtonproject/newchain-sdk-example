@@ -210,18 +210,18 @@ Return the gasLimit.
 
 #### Note
 
-The value passed into `Transaction.createEtherTransaction()` is in format of `WEI`(`ISSAC`).  
+The value passed into `Transaction.createEtherTransaction()` is in format of `ISSAC(WEI)`.  
   
-You can convert `ETHER` into `WEI`:  
+You can convert `NEW(ETHER)` into `ISSAC(WEI)`:  
 
 ```java
-Convert.toWei(value, Convert.Unit.ETHER);  // 10 ETHER / NEW
+Convert.toWei(value, Convert.Unit.ETHER);  // 10 NEW(ETHER)
 ```
 
-Also you can convert `WEI` into `ETHER`:
+Also you can convert `ISSAC(WEI)` into `NEW(ETHER)`:
 
 ```java
-Convert.fromWei(value, Convert.Unit.ETHER);  // 10 WEI / ISSAC
+Convert.fromWei(value, Convert.Unit.ETHER);  // 10 ISSAC(WEI)
 ```
 
 #### See Also
