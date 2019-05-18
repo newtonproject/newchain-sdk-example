@@ -17,7 +17,7 @@ Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 
 #### RPC URL
 
-Test net URL:
+TestNet URL:
 
 ```java
 private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
@@ -29,7 +29,7 @@ Get chain ID with the `Web3j` instance:
 
 ```java
 NetVersion netVersion = web3.netVersion().send();
-String clientVersion = netVersion.getNetVersion();
+String chainIDStr = netVersion.getNetVersion();
 ```
 
 ### Generate Keystore
@@ -46,7 +46,6 @@ String fileName = WalletUtils.generateNewWalletFile(
 
 * password (`String`): The password for the keystore.
 * destinationDirectory (`File`): The destination directory for the keystore.
-* useFullScrypt (`boolean`): If you want to generate a standard keystore. Default value is `true`.  
 
 #### Return Values
 
@@ -85,13 +84,13 @@ String fromAddress = credentials.getAddress();
 Transfer the original format address into NEW format:
 
 ```java
-String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
+String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
 ```
 
 #### Parameters
 
-* ethAddress(`String`): The original address you want to transfer.
-* chainId(`String`): The chainId (net version) you get above.
+* originalAddress(`String`): The original address you want to transfer.
+* chainID(`String`): The chainID you get above.
 
 #### Return Values
 
@@ -99,7 +98,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to original format address.](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples/java#transfer-new-address-to-original-address)
+* [Transfer from New format address to original format address.](#transfer-new-address-to-original-address)
 
 ### Get Balance
 
@@ -146,7 +145,22 @@ Return the nonce of the account of given address.
 
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
-String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
+
+//getChainID() return the chain ID in hex string
+String addressCahinID = AddressUtil.getChainID(newAddress);
+
+Integer inputChainID = Integer.parseInt(addressCahinID,16);
+System.out.println("input ID : " + inputChainID);
+Integer chainID = Integer.parseInt(chainIDStr);
+System.out.println("chain ID : " + chainID);
+
+if(!inputChainID.equals(chainID)){
+    System.out.println("Wrong input address. Please check the address you input.");
+    return;
+}else{
+    System.out.println("Right address.");
+}
 ```
 
 #### Parameters
@@ -178,7 +192,7 @@ Return the gasPrice.
 
 ### Get GasLimit
 
-Get gas limit with `Web3J.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
+Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
 Transaction tx = Transaction.createEtherTransaction(
@@ -244,7 +258,7 @@ Return the `RawTransaction` instance.
 ### Sign and Send Transaction
 
 ```java
-byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(clientVersion), credentials);
+byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(chainIDStr), credentials);
 String hexValue = Numeric.toHexString(signedMessage);
 EthSendTransaction ethSendTransaction = web3.ethSendRawTransaction(hexValue).send();
 ```
