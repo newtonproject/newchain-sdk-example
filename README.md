@@ -73,7 +73,7 @@ python tx.py pay --src 0x0286a28b49b3462252e3162A982EF28a8A8611dc --dest 0x97549
 ```
 ### Java
 
-NewChain's Java library can be downloaded [HERE](examples/java/web3j-4.1.1.zip).  
+NewChain's Java library can be downloaded here : https://github.com/newtonproject/newchain-sdk-example/raw/Winterlx-patch-1/examples/java/web3j-4.1.1.zip  
 Download it directly and import as libs:
 
 ```java
