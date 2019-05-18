@@ -74,9 +74,9 @@ public class Main {
         System.out.println("to address : " + toAddress);
 
         //getChainID() return the chain ID in hex string
-        String addressCahinID = AddressUtil.getChainID(newAddress);
+        String addressChainID = AddressUtil.getChainID(newAddress);
 
-        Integer inputChainID = Integer.parseInt(addressCahinID,16);
+        Integer inputChainID = Integer.parseInt(addressChainID,16);
         System.out.println("input ID : " + inputChainID);
         Integer chainID = Integer.parseInt(chainIDStr);
         System.out.println("chain ID : " + chainID);
