@@ -86,7 +86,24 @@ public class Main {
         String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
         String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
         System.out.println("To address : " + toAddress);
+     
+        String toAddressWithChainId = AddressUtil.newAddress2ethAddressWithChainID(newAddress);
+        System.out.println("to address with chain id : " + toAddressWithChainId);
 
+        String inputAddressChainId = toAddressWithChainId.substring(0,4);
+        System.out.println("input address chain id : " + inputAddressChainId);
+
+        Integer inputId = Integer.parseInt(inputAddressChainId,16);
+        System.out.println("input id : " + inputId);
+        Integer chainId = Integer.parseInt(clientVersion);
+        System.out.println("chain id : " + chainId);
+
+        if(!inputId.equals(chainId)){
+            System.out.println("Wrong input address. Please check the address you input.");
+            return;
+        }else{
+            System.out.println("Right address.");
+        }
 
         EthGasPrice ethGasPrice = web3.ethGasPrice().send();
         BigInteger gasPrice = ethGasPrice.getGasPrice();
