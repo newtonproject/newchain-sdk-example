@@ -24,6 +24,7 @@ public class Main {
     //Main Net
     //private final static String rpcUrl = "https://global.rpc.mainnet.newtonproject.org";
     
+    //The value you want to transfer
     private final static BigDecimal value = BigDecimal.valueOf(10);
 
     public static void main(String[] args) throws CipherException, IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException {
