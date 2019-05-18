@@ -186,8 +186,10 @@ Return the gasPrice.
 Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
+private final static BigDecimal value = BigDecimal.valueOf(10);
+...
 Transaction tx = Transaction.createEtherTransaction(
-            fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+            fromAddress, nonce, gasPrice, null, toAddress, value, Convert.Unit.ETHER).toBigInteger());
 EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
 BigInteger gasLimit = ethEstimateGas.getAmountUsed();
 ```
@@ -214,13 +216,13 @@ The value passed into `Transaction.createEtherTransaction()` is in format of `WE
 You can convert `ETHER` into `WEI`:  
 
 ```java
-Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 ETHER / NEW
+Convert.toWei(value, Convert.Unit.ETHER);  // 10 ETHER / NEW
 ```
 
 Also you can convert `WEI` into `ETHER`:
 
 ```java
-Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
+Convert.fromWei(value, Convert.Unit.ETHER);  // 10 WEI / ISSAC
 ```
 
 #### See Also
@@ -231,7 +233,7 @@ Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
 
 ```java
 RawTransaction rawTransaction = RawTransaction.createEtherTransaction(
-                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
 ```
 
 #### Parameters
