@@ -17,7 +17,7 @@ Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 
 #### RPC URL
 
-Test net URL:
+TestNet URL:
 
 ```java
 private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
@@ -29,7 +29,7 @@ Get chain ID with the `Web3j` instance:
 
 ```java
 NetVersion netVersion = web3.netVersion().send();
-String clientVersion = netVersion.getNetVersion();
+String chainIDStr = netVersion.getNetVersion();
 ```
 
 ### Generate Keystore
@@ -46,7 +46,6 @@ String fileName = WalletUtils.generateNewWalletFile(
 
 * password (`String`): The password for the keystore.
 * destinationDirectory (`File`): The destination directory for the keystore.
-* useFullScrypt (`boolean`): If you want to generate a standard keystore. Default value is `true`.  
 
 #### Return Values
 
@@ -85,13 +84,13 @@ String fromAddress = credentials.getAddress();
 Transfer the original format address into NEW format:
 
 ```java
-String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
+String demo = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
 ```
 
 #### Parameters
 
 * originalAddress(`String`): The original address you want to transfer.
-* chainId(`String`): The chainId (net version) you get above.
+* chainID(`String`): The chainID you get above.
 
 #### Return Values
 
@@ -99,7 +98,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to original format address.](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples/java#transfer-new-address-to-original-address)
+* [Transfer from New format address to original format address.](examples/java#transfer-new-address-to-original-address)
 
 ### Get Balance
 
@@ -146,7 +145,7 @@ Return the nonce of the account of given address.
 
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
-String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
 
 //getChainID() return the chain ID in hex string
 String addressCahinID = AddressUtil.getChainID(newAddress);
@@ -259,7 +258,7 @@ Return the `RawTransaction` instance.
 ### Sign and Send Transaction
 
 ```java
-byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(clientVersion), credentials);
+byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(chainIDStr), credentials);
 String hexValue = Numeric.toHexString(signedMessage);
 EthSendTransaction ethSendTransaction = web3.ethSendRawTransaction(hexValue).send();
 ```
