@@ -40,15 +40,6 @@ String fileName = WalletUtils.generateNewWalletFile(
                 new File("C:\\Files\\wallet"));
 ```
 
-Create a light keystore:
-
-```java
-String fileName = WalletUtils.generateNewWalletFile(
-                "123qwe",
-                new File("C:\\Files\\wallet")
-                false);
-```
-
 #### Parameters
 
 * password (`String`): The password for the keystore.
