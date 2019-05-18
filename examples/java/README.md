@@ -106,7 +106,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to original format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#transfer-new-address-to-original-address)
+* [Transfer from New format address to original format address.](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples/java#transfer-new-address-to-original-address)
 
 ### Get Balance
 
@@ -166,7 +166,7 @@ Return the original address.
 
 #### See Also
 
-* [Transfer from original format address to NEW format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#get-original-address-and-transfer-to-new-address)
+* [Transfer from original format address to NEW format address.](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples/java#get-original-address-and-transfer-to-new-address)
 
 ### Get gasPrice
 
