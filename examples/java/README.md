@@ -1,11 +1,14 @@
 NewChain SDK for java
 ==================================
-
-## Get the Jars
-
-Download address: [HERE](web3j-4.1.1.zip)
-
 ## Get Started
+
+### RPC URL
+
+TestNet URL:
+
+```java
+private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
+```
 
 ### Get a Web3j Instance
 
@@ -15,13 +18,6 @@ Get a `Web3j` instance with a `Web3jService` instance, which needs a URL as the 
 Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 ```
 
-#### RPC URL
-
-TestNet URL:
-
-```java
-private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
-```
 
 ### Get the chainId (net version)
 
