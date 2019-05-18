@@ -35,7 +35,7 @@ public class Main {
             return;
         }
         String chainIDStr = netVersion.getNetVersion();
-        System.out.println("Client version : " + chainIDStr);
+        System.out.println("chain ID : " + chainIDStr);
 
         //comment out if you want to create keystore
         /*String fileName = WalletUtils.generateNewWalletFile(
@@ -64,9 +64,9 @@ public class Main {
         System.out.println("nonce : " + nonce);
 
         //Main net address
-//        String newAddress = "NEW182KVqyBnPTxGVhU57krvhTy5i5SQBYecxZh";
-//        String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
-//        System.out.println("to address : " + toAddress);
+        //String newAddress = "NEW182KVqyBnPTxGVhU57krvhTy5i5SQBYecxZh";
+        //String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+        //System.out.println("to address : " + toAddress);
 
         //Test net address
         String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
