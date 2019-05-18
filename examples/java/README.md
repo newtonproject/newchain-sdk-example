@@ -159,7 +159,7 @@ Return the original address.
 
 #### See Also
 
-* [Transfer from original format address to NEW format address.](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples/java#get-original-address-and-transfer-to-new-address)
+* [Transfer from original format address to NEW format address.](https://github.com/newtonproject/newchain-sdk-example/blob/master/address_standards.md)
 
 ### Get gasPrice
 
