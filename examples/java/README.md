@@ -1,11 +1,14 @@
 NewChain SDK for java
 ==================================
-
-## Get the Jars
-
-Download address: [HERE](web3j-4.1.1.zip)
-
 ## Get Started
+
+### RPC URL
+
+TestNet URL:
+
+```java
+private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
+```
 
 ### Get a Web3j Instance
 
@@ -15,13 +18,6 @@ Get a `Web3j` instance with a `Web3jService` instance, which needs a URL as the 
 Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 ```
 
-#### RPC URL
-
-TestNet URL:
-
-```java
-private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
-```
 
 ### Get the chainId (net version)
 
@@ -150,15 +146,11 @@ String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
 String addressCahinID = AddressUtil.getChainID(newAddress);
 
 Integer inputChainID = Integer.parseInt(addressCahinID,16);
-System.out.println("input ID : " + inputChainID);
 Integer chainID = Integer.parseInt(chainIDStr);
-System.out.println("chain ID : " + chainID);
 
 if(!inputChainID.equals(chainID)){
     System.out.println("Wrong address. Please check the address.");
     return;
-}else{
-    System.out.println("Right address.");
 }
 ```
 
@@ -194,8 +186,10 @@ Return the gasPrice.
 Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
+private final static BigDecimal value = BigDecimal.valueOf(10);
+...
 Transaction tx = Transaction.createEtherTransaction(
-            fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+            fromAddress, nonce, gasPrice, null, toAddress, value, Convert.Unit.ETHER).toBigInteger());
 EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
 BigInteger gasLimit = ethEstimateGas.getAmountUsed();
 ```
@@ -222,13 +216,13 @@ The value passed into `Transaction.createEtherTransaction()` is in format of `WE
 You can convert `ETHER` into `WEI`:  
 
 ```java
-Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 ETHER / NEW
+Convert.toWei(value, Convert.Unit.ETHER);  // 10 ETHER / NEW
 ```
 
 Also you can convert `WEI` into `ETHER`:
 
 ```java
-Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
+Convert.fromWei(value, Convert.Unit.ETHER);  // 10 WEI / ISSAC
 ```
 
 #### See Also
@@ -239,7 +233,7 @@ Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
 
 ```java
 RawTransaction rawTransaction = RawTransaction.createEtherTransaction(
-                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
 ```
 
 #### Parameters
