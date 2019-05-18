@@ -146,9 +146,7 @@ String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
 String addressCahinID = AddressUtil.getChainID(newAddress);
 
 Integer inputChainID = Integer.parseInt(addressCahinID,16);
-System.out.println("input ID : " + inputChainID);
 Integer chainID = Integer.parseInt(chainIDStr);
-System.out.println("chain ID : " + chainID);
 
 if(!inputChainID.equals(chainID)){
     System.out.println("Wrong address. Please check the address.");
