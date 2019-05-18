@@ -17,6 +17,8 @@ Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 
 #### RPC URL
 
+Test net URL:
+
 ```java
 private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
 ```
