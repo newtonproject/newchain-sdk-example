@@ -1,11 +1,14 @@
 NewChain SDK for java
 ==================================
-
-## Get the Jars
-
-Download address: [HERE](web3j-4.1.1.zip)
-
 ## Get Started
+
+### RPC URL
+
+TestNet URL:
+
+```java
+private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
+```
 
 ### Get a Web3j Instance
 
@@ -15,11 +18,6 @@ Get a `Web3j` instance with a `Web3jService` instance, which needs a URL as the 
 Web3j web3 = Web3j.build(new HttpService(rpcUrl));
 ```
 
-#### RPC URL
-
-```java
-private final static String rpcUrl = "https://rpc1.newchain.newtonproject.org/";
-```
 
 ### Get the chainId (net version)
 
@@ -27,7 +25,7 @@ Get chain ID with the `Web3j` instance:
 
 ```java
 NetVersion netVersion = web3.netVersion().send();
-String clientVersion = netVersion.getNetVersion();
+String chainIDStr = netVersion.getNetVersion();
 ```
 
 ### Generate Keystore
@@ -40,20 +38,10 @@ String fileName = WalletUtils.generateNewWalletFile(
                 new File("C:\\Files\\wallet"));
 ```
 
-Create a light keystore:
-
-```java
-String fileName = WalletUtils.generateNewWalletFile(
-                "123qwe",
-                new File("C:\\Files\\wallet")
-                false);
-```
-
 #### Parameters
 
 * password (`String`): The password for the keystore.
 * destinationDirectory (`File`): The destination directory for the keystore.
-* useFullScrypt (`boolean`): If you want to generate a standard keystore. Default value is `true`.  
 
 #### Return Values
 
@@ -75,13 +63,12 @@ Credentials credentials = WalletUtils.loadCredentials(
 
 * password(`String`): The password for the keystore.  
 * source(`String`): The path of the keystore.
-* source(`File`): The keystore instance.
 
 #### Return Values
 
 Return an `Credentials` instance with keystore information.
 
-### Get eth Address and Transfer to NEW Address
+### Get original Address and Convert it into NEW Address
 
 Get the address of the keystore with the `Credentials` instance:
 
@@ -89,16 +76,16 @@ Get the address of the keystore with the `Credentials` instance:
 String fromAddress = credentials.getAddress();
 ```
 
-Transfer the eth format address into NEW format:
+Convert the original format address into NEW format:
 
 ```java
-String demo = AddressUtil.ethAddress2NewAddress(fromAddress, clientVersion);
+String fromAddressNEWFormat = AddressUtil.originalAddress2NewAddress(fromAddress, chainIDStr);
 ```
 
 #### Parameters
 
-* ethAddress(`String`): The eth address you want to transfer.
-* chainId(`String`): The chainId (net version) you get above.
+* originalAddress(`String`): The address in original format.
+* chainID(`String`): The chainID you get above.
 
 #### Return Values
 
@@ -106,7 +93,7 @@ Return a `String` value which is the NEW format address.
 
 #### See Also
 
-* [Transfer from New format address to eth format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#transfer-new-address-to-eth-address)
+* [Convert from New format address to original format address.](#convert-new-address-into-original-address)
 
 ### Get Balance
 
@@ -149,24 +136,35 @@ BigInteger nonce = ethGetTransactionCount.getTransactionCount();
 
 Return the nonce of the account of given address.
 
-### Transfer NEW Address to eth Address
+### Convert NEW Address into original Address
 
 ```java
 String newAddress = "NEW17zJoq3eHwv3x7cJNgdmG73Limvv7TwQurB4";
-String toAddress = AddressUtil.newAddress2ethAddress(newAddress);
+String toAddress = AddressUtil.newAddress2originalAddress(newAddress);
+
+//getChainID() return the chain ID in hex string
+String addressChainID = AddressUtil.getChainID(newAddress);
+
+Integer inputChainID = Integer.parseInt(addressChainID,16);
+Integer chainID = Integer.parseInt(chainIDStr);
+
+if(!inputChainID.equals(chainID)){
+    System.out.println("Wrong address. Please check the address.");
+    return;
+}
 ```
 
 #### Parameters
 
-* newAdderss(`String`): The NEW address you want to transfer.
+* newAdderss(`String`): The address in NEW format.
 
 #### Return Values
 
-Return the eth address.
+Return the original address.
 
 #### See Also
 
-* [Transfer from eth format address to NEW format address.](https://gitlab.newtonproject.org/lixuan/web3j-example#get-eth-address-and-transfer-to-new-address)
+* [NewChain Address Identifier (NAI)](https://github.com/newtonproject/newchain-sdk-example/blob/master/address_standards.md)
 
 ### Get gasPrice
 
@@ -185,11 +183,12 @@ Return the gasPrice.
 
 ### Get GasLimit
 
-Get gas limit with `Web3J.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
+Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transaction on block chain.
 
 ```java
+BigDecimal value = BigDecimal.valueOf(10);
 Transaction tx = Transaction.createEtherTransaction(
-            fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+            fromAddress, nonce, gasPrice, null, toAddress, value, Convert.Unit.ETHER).toBigInteger());
 EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
 BigInteger gasLimit = ethEstimateGas.getAmountUsed();
 ```
@@ -211,18 +210,18 @@ Return the gasLimit.
 
 #### Note
 
-The value passed into `Transaction.createEtherTransaction()` is in format of `WEI`(`ISSAC`).  
+The value passed into `Transaction.createEtherTransaction()` is in format of `ISSAC(WEI)`.  
   
-You can transfer `ETHER` into `WEI`:  
+You can convert `NEW(ETHER)` into `ISSAC(WEI)`:  
 
 ```java
-Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 ETHER / NEW
+Convert.toWei(value, Convert.Unit.ETHER);  // 10 NEW(ETHER)
 ```
 
-Also you can transfer `WEI` into `ETHER`:
+Also you can convert `ISSAC(WEI)` into `NEW(ETHER)`:
 
 ```java
-Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
+Convert.fromWei(value, Convert.Unit.ETHER);  // 10 ISSAC(WEI)
 ```
 
 #### See Also
@@ -233,7 +232,7 @@ Convert.fromWei(BigDecimal.valueOf(10), Convert.Unit.ETHER);  // 10 WEI / ISSAC
 
 ```java
 RawTransaction rawTransaction = RawTransaction.createEtherTransaction(
-                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+                nonce, gasPrice, gasLimit, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
 ```
 
 #### Parameters
@@ -251,7 +250,7 @@ Return the `RawTransaction` instance.
 ### Sign and Send Transaction
 
 ```java
-byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(clientVersion), credentials);
+byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, Integer.parseInt(chainIDStr), credentials);
 String hexValue = Numeric.toHexString(signedMessage);
 EthSendTransaction ethSendTransaction = web3.ethSendRawTransaction(hexValue).send();
 ```
