@@ -1,4 +1,5 @@
 const newchainWeb3 = require("newchain-web3");
+const newchainAccount = require('newchain-web3-accounts');
 const newTx = require("newchainjs-tx");
 const base58check = require("base58check");
 
@@ -16,10 +17,11 @@ const mainChainId = 1012;
  * generate the account, you can get your hex address, and your privateKey.
  */
 const web3 = new newchainWeb3(DevRpc);
-const account = new web3.eth.accounts.create();
+const account = new newchainAccount.Accounts(DevRpc);
 
-console.log("Account address: " + account.address);
-console.log("Account private key: " + account.privateKey);
+const accountObj = account.create() 
+console.log("Account address: " + accountObj.address);
+console.log("Account private key: " + accountObj.privateKey);
 
 /**
  * define the address and private Key
@@ -28,7 +30,7 @@ const address = "0x32eebc8fd8cb9353eeb5e0ea4ee124dd66ee6a37";
 const privateKey = "0xe4dc3fddabf68b36aa61af08e0e0f8c06801e262faec95abf2c67c309ae5d42d";
 const toAddress = "0x9d851444143ee6fb8c535b183c3ee191e79666f5";
 const privBuffer = Buffer.from(privateKey.replace("0x",""), 'hex');
-
+console.log("address:" + account.privateKeyToAccount(privateKey).address);
 
 signUseTx();
 testConvertAddress();
