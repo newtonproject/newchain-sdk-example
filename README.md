@@ -2,7 +2,7 @@
 
 **Note: This document can be found on both our [documentation website](http://docs.newtonproject.org/en/NewChain/) and [GitHub repository](https://github.com/newtonproject/newchain-sdk-example)**
 
-This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](https://gitlab.newtonproject.org/alexcg/newchain-sdk-example/tree/master/examples) folder
+This document describes how to get started with Newton's NewChain SDK. At present we support NodeJS, Python, and Java. Example transaction code for each language can be found in the [examples](hhttps://github.com/newtonproject/newchain-sdk-example/tree/master/examples) folder
 
 For more detailed reference information, please check:
 
@@ -15,13 +15,13 @@ For more detailed reference information, please check:
 Clone our GitLab repo and enter the directory:
 
 ```sh
-git clone git@gitlab.newtonproject.org:alexcg/newchain-sdk-example.git
+git clone https://github.com/newtonproject/newchain-sdk-example.git
 cd newchain-sdk-example
 ```
 
 ## Running Example Code
 
-All example code is stored in the [examples](https://gitlab.newtonproject.org/alexcg/newchain-sdk-example/tree/master/examples) folder.
+All example code is stored in the [examples](https://github.com/newtonproject/newchain-sdk-example/tree/master/examples) folder.
 
 ### Node.js
 
