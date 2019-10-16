@@ -343,7 +343,7 @@ String password, ECKeyPair ecKeyPair, File destinationDirectory, String fileName
 No return value.
 
 ### Check Address
-####Code
+#### Code
 ```
 String addressChainID = AddressUtil.getChainID(newAddress);
 Integer inputChainID = Integer.parseInt(addressChainID,16);
@@ -355,6 +355,15 @@ if(!inputChainID.equals(chainID)){
       return;
 }
 ```
+### Get KeyPair from Keystore
+```
+String publicKey = credentials.getEcKeyPair().getPublicKey().toString(16);
+String privateKey = credentials.getEcKeyPair().getPrivateKey().toString(16);
+
+System.out.println("pub " + publicKey);
+System.out.println("pri " + privateKey);
+```
+
 
 
 
