@@ -188,7 +188,7 @@ Get gas limit with `Web3j.ethEstimateGas()` function.This won\`t sent a transact
 ```java
 BigDecimal value = BigDecimal.valueOf(10);
 Transaction tx = Transaction.createEtherTransaction(
-            fromAddress, nonce, gasPrice, null, toAddress, value, Convert.toWei(BigDecimal.valueOf(10), Convert.Unit.ETHER).toBigInteger());
+            fromAddress, nonce, gasPrice, null, toAddress, Convert.toWei(value, Convert.Unit.ETHER).toBigInteger());
 EthEstimateGas ethEstimateGas = web3.ethEstimateGas(tx).send();
 BigInteger gasLimit = ethEstimateGas.getAmountUsed();
 ```
