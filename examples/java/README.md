@@ -296,3 +296,65 @@ None
 #### Return Values
 
 Return the `String` value of transaction hash.
+
+## Advanced usage
+
+### Change Password of Keystore
+#### Code
+```
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.web3j.crypto.CipherException;
+import org.web3j.crypto.ECKeyPair;
+import org.web3j.crypto.Wallet;
+import org.web3j.crypto.WalletFile;
+
+import java.io.File;
+import java.io.IOException;
+...
+private static void updateKeyStorePassword(String password, ECKeyPair ecKeyPair, String filePath) throws CipherException, IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        WalletFile walletFile = Wallet.createStandard(password, ecKeyPair);
+        File destination = new File(filePath);
+        objectMapper.writeValue(destination, walletFile);
+    }
+...
+```
+#### How to Use
+```
+String password = "password";    //Your <b>OLD</b> password
+
+File file = new File("/your/keystore/path");    //Your <b>KEYSTORE</b> path
+String filePath = file.getAbsolutePath();
+
+Credentials credentials = WalletUtils.loadCredentials(password, file);  
+ECKeyPair ecKeyPair = credentials.getEcKeyPair();
+
+updateKeyStorePassword(password, ecKeyPair, filePath);
+```
+
+#### Parameters
+String password, ECKeyPair ecKeyPair, File destinationDirectory, String fileName
+* password(`String`): The <b>NEW</b> password you want for the keystore.
+* ecKeyPair(`ECKeyPair`): The ECKeyPair instance got from CredenTtials.getEcKeyPair().
+* filePath(`String`)L: The absolute file path of your keystore.
+
+#### Return Values
+
+No return value.
+
+### Check Address
+####Code
+```
+String addressChainID = AddressUtil.getChainID(newAddress);
+Integer inputChainID = Integer.parseInt(addressChainID,16);
+System.out.println("input ID : " + inputChainID);
+Integer chainID = Integer.parseInt(chainIDStr);
+System.out.println("chain ID : " + chainID);
+if(!inputChainID.equals(chainID)){
+      System.out.println("Wrong input address. Please check the address you input.");
+      return;
+}
+```
+
+
+
