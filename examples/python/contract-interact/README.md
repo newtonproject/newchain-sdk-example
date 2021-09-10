@@ -21,5 +21,3 @@ pip3 install -r requirements
 - 在 `contracts/utils` 中获取合约信息
 - 参考 `zombie.py` 编写合约交互内容
 - 在 `main.py` 中调用相关合约信息
-
-## 持续改进中...
