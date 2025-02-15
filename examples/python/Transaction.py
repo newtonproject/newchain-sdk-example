@@ -8,48 +8,65 @@
 @copyright: 2018-2019 Newton Foundation. All rights reserved.
 """
 
+import sys 
 import base58
 import json
-from newchain_web3 import Web3, HTTPProvider
 
-w3 = Web3(HTTPProvider('https://rpc1.newchain.newtonproject.org/'))
+# add newchain_keys_constants to sys.modules
+# newchain_keys_constants must be imported before web3
+sys.modules['eth_keys.constants'] = __import__('newchain_keys_constants')
+from web3 import Web3, HTTPProvider, Account
+from web3.middleware import geth_poa_middleware
+
+TESTNET_JSONRPC_URL = "https://rpc1.newchain.newtonproject.org"
+
+w3 = Web3(HTTPProvider(TESTNET_JSONRPC_URL))
 
 ClientVersion = int(w3.net.version)
 print("Client Version: %s" % ClientVersion)
+print("Rpc Url: %s " % TESTNET_JSONRPC_URL)
 
-from web3.middleware import geth_poa_middleware
 w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 def NewToEth(str):
-	print("Str: 0x%s" % base58.b58decode_check(str[3:]).hex().lower()[6:])
+	print("%s  0x%s" % (str, base58.b58decode_check(str[3:]).hex().lower()[6:]))
 	return "0x%s" % base58.b58decode_check(str[3:]).hex().lower()[6:]
 
-From = w3.toChecksumAddress(NewToEth("NEW17zDT6sQYPCATtJZ3QpPoR2yW8aGBc2hS3MT")) #/tmp/wallet
+From = w3.toChecksumAddress(NewToEth("NEW17zWzuY5etuEjM2eSAkXTtfEoRNxdY66aVUa")) # ~/keystore_test
 To = w3.toChecksumAddress(NewToEth("NEW17zNNCR9ouLnVMktE8iHBwaPZJh14iK3ghGU"))
+
 print("Gas Price: %s" % w3.eth.gasPrice)
+print("From Balance: %s" %  w3.fromWei(w3.eth.getBalance(From), 'ether'))
+print("To Balance: %s" % w3.fromWei(w3.eth.getBalance(To), 'ether'))
 
-print("From Balance: %s" % w3.eth.getBalance(From))
-print("To Balance: %s" % w3.eth.getBalance(To))
-
-with open("/tmp/UTC--2019-04-01T15-45-13.671000000Z--0c0be2750b4cf6664efb7da885507654f70f38b5.json") as load_f:
+with open("./keystore_test") as load_f:
     jsonvalue = json.load(load_f)
 
 w3.eth.account.chain_id=ClientVersion
  
-Account = w3.eth.account.privateKeyToAccount(w3.eth.account.decrypt(jsonvalue,"123qwe"))
+Account = w3.eth.account.privateKeyToAccount(w3.eth.account.decrypt(jsonvalue,"12345678"))
 print("getTransactionCount of [%s] is: %s" % (From,w3.eth.getTransactionCount(From)))
 
-Gas = w3.eth.estimateGas({'to': To, 'from': From, 'value': 1})
+value = w3.toWei(1, 'ether')
+Gas = w3.eth.estimateGas({'to': To, 'from': From, 'value': value})
 print("Gas: %s" % Gas)
+
+nonce = w3.eth.getTransactionCount(From)
 
 signed_txn = Account.signTransaction(
     dict(
-    nonce=0,
+    nonce=nonce,
     gasPrice=w3.eth.gasPrice,
     gas=Gas,
     to=To,
-    value=1,
+    value=value,
     chainId=ClientVersion)
 )
 
-w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+tx_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+print("Tx Hash: %s" % tx_hash.hex())
+receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+print("Tx Receipt: %s" % receipt)
+
+print("From Balance: %s" %  w3.fromWei(w3.eth.getBalance(From), 'ether'))
+print("To Balance: %s" % w3.fromWei(w3.eth.getBalance(To), 'ether'))
