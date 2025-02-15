@@ -1,6 +1,6 @@
-newchain-account==0.2.4
-newchain-web3==0.1.0
-click
-base58
-binascii
-eth_utils
+web3==5.29.1
+click==8.1.8
+base58==1.0.3
+eth_utils==1.9.5
+eth-abi==2.2.0
+eth-rlp==0.2.1
