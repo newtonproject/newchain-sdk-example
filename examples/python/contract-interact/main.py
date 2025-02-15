@@ -12,4 +12,9 @@ sys.modules['eth_keys.constants'] = __import__('newchain_keys_constants')
 from newchain import zombie
 
 if __name__ == "__main__":
+
+    # deploy contract
+    # zombie.deploy()
+
+    # mint nft
     zombie.only_mint()
