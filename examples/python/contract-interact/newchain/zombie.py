@@ -22,6 +22,10 @@ w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # 获取账户信息
 account = w3.eth.account.privateKeyToAccount(config.PRIVATE_KEY)
+
+print('address: %s' % account.address)
+
+
 chain_id = int(w3.net.version)
 gas_price = w3.eth.gasPrice
 
@@ -35,7 +39,7 @@ def mint(contract):
     mint zombie nft
     """
     transaction = pre_transaction(account.address)
-    reward_address = Web3.toChecksumAddress("0xff827d59f973bc57eec55dce2955e03e6c81db30")
+    reward_address = Web3.toChecksumAddress("0xCc89df8B5D148BCe8CCfD8345F2b42128Eef0018")
     token_uri = "https://raw.githubusercontent.com/weixuefeng/tokeuri/main/zombie.png"
     gas = contract.functions.awardItem(reward_address, token_uri).estimateGas(transaction)
     transaction['gas'] = gas
@@ -97,7 +101,7 @@ def deploy_dev():
 
 
 def only_mint():
-    address = "0x57b98Fed6Ab31c21704b851dFe879fAC9798f14B"
+    address = "0x944EcEC585dd2C79eb0ce377c28a0148E082A3C0"
     contract = utils.get_contract(w3, address, constant.ABI_ZOMBIE)
     mint(contract)
 

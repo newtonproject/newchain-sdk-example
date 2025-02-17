@@ -1,5 +1,4 @@
 web3==5.29.1
-click==8.1.8
 base58==1.0.3
 eth_utils==1.9.5
 eth-abi==2.2.0
