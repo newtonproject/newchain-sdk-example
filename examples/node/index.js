@@ -14,6 +14,7 @@ const devChainId = 1002;
 const testChainId = 1007;
 const mainChainId = 1012;
 
+
 /**
  * generate the account, you can get your hex address, and your privateKey.
  */
@@ -27,14 +28,14 @@ console.log("Account private key: " + accountObj.privateKey);
 /**
  * define the address and private Key
  */
-const address = "0x32eebc8fd8cb9353eeb5e0ea4ee124dd66ee6a37";
+const address = "0x6cCD72b70926f5794B0B6FBD2e19c9e3F105044F";
 const privateKey = "0x4befb65242ca03dc31cc446c6e17a91f40db9ad0fc03e16264103e8e7fae32fc";
 const toAddress = "0x9d851444143ee6fb8c535b183c3ee191e79666f5";
 const privBuffer = Buffer.from(privateKey.replace("0x",""), 'hex');
 console.log("address:" + account.privateKeyToAccount(privateKey).address);
 
 signUseTx();
-testConvertAddress();
+// testConvertAddress();
 
 function testConvertAddress() {
     var newAddress = "NEW17zGziJeWdpN8YTQ94kDrAqC8rDaTmw27yMK";
@@ -45,6 +46,7 @@ function testConvertAddress() {
 function signUseTx() {
     var value = 1100200;
     web3.eth.getBalance(address).then(balance => { console.log("Balance is:" + balance); }).catch(new Function());
+
     web3.eth.getTransactionCount(address).then(
         nonce => {
             console.log("Nonce: " + nonce);
@@ -71,7 +73,29 @@ function signUseTx() {
                     const serializedTx = tx.serialize();
                     const raw = "0x" + serializedTx.toString("hex");
                     console.log("Raw serialized transaction: " + raw);
-                    web3.eth.sendSignedTransaction(raw).on('receipt', receipt => console.log("Receipt: "+ receipt)).catch(new Function());
+
+                    web3.eth.sendSignedTransaction(raw)
+                    .on('receipt', receipt => {
+                        console.log("Receipt: "+ receipt)
+                        console.log(receipt)
+                    })
+                    // .on('confirmation', (confirmationNumber, receipt) => {
+                    //     console.log("confirmation: " + confirmationNumber)
+                    //     console.log(receipt)
+                    // })
+                    .on('transactionHash', transactionHash => {
+                        console.log("transactionHash:")
+                        console.log(transactionHash)
+                    })
+                    .on('error', error => {
+                        console.log("error:")
+                        console.log(error)
+                    })
+                    .catch((error) => {
+                        console.log("catch:error:");
+                        console.log(error);
+                    });
+
                 }).catch(new Function());
             }).catch(new Function());
         }

@@ -9,12 +9,12 @@
   "author": "weixuefeng@lubangame.com",
   "license": "ISC",
   "dependencies": {
-    "newchain-web3": "^0.1.1",
-    "newchain-web3-accounts": "^0.1.0",
-    "newchainjs-tx": "^0.1.1",
-    "newchainjs-util": "^0.1.1",
     "base58check": "latest",
+    "bip39": "latest",
     "newchain-hdkey": "latest",
-    "bip39": "latest"
+    "newchain-web3-accounts": "^0.1.1",
+    "newchain-web3": "^0.1.2",
+    "newchainjs-tx": "^0.1.3",
+    "newchainjs-util": "^0.1.1"
   }
 }
