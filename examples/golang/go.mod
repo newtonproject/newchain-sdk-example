@@ -1,6 +1,6 @@
 module github.com/newtonproject/newchain-sdk-example/examples/golang
 
-go 1.23.2
+go 1.22.12
 
 require (
 	github.com/btcsuite/btcutil v1.0.2
@@ -28,11 +28,10 @@ require (
 	github.com/steakknife/hamming v0.0.0-20180906055917-c99c65617cd3 // indirect
 	github.com/tklauser/go-sysconf v0.3.5 // indirect
 	github.com/tklauser/numcpus v0.2.2 // indirect
-	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
-	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
-	golang.org/x/text v0.3.6 // indirect
+	golang.org/x/crypto v0.31.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace github.com/ethereum/go-ethereum => github.com/newtonproject/newchain v1.9.18-newton
+replace github.com/ethereum/go-ethereum => github.com/newtonproject/newchain v1.9.18-newton-1.2
