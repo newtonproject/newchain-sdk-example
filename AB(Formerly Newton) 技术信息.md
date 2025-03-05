@@ -41,7 +41,8 @@
 3. 示例代码：
     - https://github.com/newtonproject/newchain-sdk-example
 
-4. 目前Newton提供的RPC服务开放使用的API包括如下：（如需更多接口请自建节点）  
+4. 目前Newton提供的RPC服务开放使用的API包括如下：（如需更多接口请自建节点）
+```
     "net_version",  
     "net_peerCount",  
     "net_listening",  
@@ -82,6 +83,6 @@
     "eth_getFilterLogs",  
     "eth_getLogs",  
     "eth_chainId",  
-    "eth_getProof",  
- 
+    "eth_getProof",
+```
 
