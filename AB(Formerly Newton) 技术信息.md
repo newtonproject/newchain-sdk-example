@@ -32,7 +32,7 @@
 
 1. RPC服务地址
     - 主网(MainNet):
-      - https://global.rpc.mainnet.newtonproject.org
+      - https://global.rpc.iot.ab.org
       - https://apne1.rpc.iot.ab.org
     - 测试网(TestNet):
       - https://rpc1.newchain.newtonproject.org
