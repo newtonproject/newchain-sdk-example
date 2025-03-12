@@ -55,8 +55,8 @@
 
 - **RPC Service Endpoints**:
   - **Mainnet (MainNet)**:  
-    - [https://global.rpc.mainnet.newtonproject.org](https://global.rpc.mainnet.newtonproject.org)
-    - [https://apne1.rpc.iot.ab.org](https://apne1.rpc.iot.ab.org)
+    - https://global.rpc.iot.ab.org
+    - https://apne1.rpc.iot.ab.org
   - **Testnet (TestNet)**:  
     [https://rpc1.newchain.newtonproject.org](https://rpc1.newchain.newtonproject.org)
 
