@@ -31,8 +31,11 @@
 ## API 
 
 1. RPC服务地址
-    - 主网(MainNet): https://global.rpc.mainnet.newtonproject.org
-    - 测试网(TestNet): https://rpc1.newchain.newtonproject.org
+    - 主网(MainNet):
+      - https://global.rpc.mainnet.newtonproject.org
+      - https://apne1.rpc.iot.ab.org
+    - 测试网(TestNet):
+      - https://rpc1.newchain.newtonproject.org
 
 2. ChainID
     - 主网(MainNet): 1012
